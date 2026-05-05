@@ -519,7 +519,7 @@
             <div class="entry-row"><div class="entry-left">Jan 2021 – Feb 2023</div><div class="entry-right"><strong>Water Resources Engineer</strong>, Environmental Management and Engineering Consultants Ltd. (EMEC), Dhaka, Bangladesh</div></div>
             <div class="entry-row"><div class="entry-left">Jan 2019 – Dec 2020</div><div class="entry-right"><strong>Research Consultant</strong>, Center for Environmental and Geographic Information Services (CEGIS), Dhaka, Bangladesh</div></div>
 
-            <!-- HIGHLIGHTS OF MY WORK (carousel) placed after Professional Appointments -->
+            <!-- HIGHLIGHTS OF MY WORK (carousel) after Professional Appointments -->
             <h3 class="subsection-title">Highlights of My Work</h3>
             <div id="carousel" class="carousel-container">
                 <div class="carousel-slides" id="carouselSlides"></div>
@@ -555,7 +555,7 @@
                     <strong>Findings:</strong> Although existing roads and embankments in the floodplain can protect crops in case of low return period pre-monsoon flood, these structures can degrade the upstream flood level and duration significantly during high return period pre-monsoon and monsoon flood. A hydraulic connectivity-based workflow was presented to identify the optimal cross-drainage location along the road network to restore the natural hydrodynamics of floodplain.
                 </div>
 
-                <!-- Embedded web map immediately after findings, before Database Directory -->
+                <!-- Embedded web map after findings, before Database Directory -->
                 <div class="embed-map">
                     <iframe src="https://sds31.github.io/Haor-Flood-Analysis-Directory/settlement_inundation" title="Settlement Inundation Map"></iframe>
                 </div>
@@ -679,27 +679,26 @@
 </div>
 
 <script>
-    // Image carousel for Fig01.JPG to Fig20.JPG (only existing files)
+    // Image carousel for Fig01.jpg ... Fig10.jpg (only existing files)
     (function() {
-        const maxFigs = 20;
+        const maxFigs = 10;
         let images = [];
         for (let i = 1; i <= maxFigs; i++) {
             let num = i.toString().padStart(2, '0');
-            images.push(`Fig${num}.JPG`);
+            images.push(`Fig${num}.jpg`);
         }
-        let loadedImages = [];
+        let validImages = [];
         const slidesContainer = document.getElementById('carouselSlides');
         const dotsContainer = document.getElementById('carouselDots');
         let currentIndex = 0;
         let autoInterval;
 
-        function buildCarousel(validImages) {
-            if (validImages.length === 0) {
-                slidesContainer.innerHTML = '<div style="padding: 2rem; text-align: center;">No images found (Fig01.JPG – Fig20.JPG)</div>';
+        function buildCarousel(valid) {
+            if (valid.length === 0) {
+                slidesContainer.innerHTML = '<div style="padding: 2rem; text-align: center;">No images found (Fig01.jpg – Fig10.jpg)</div>';
                 return;
             }
-            // create slides
-            validImages.forEach((imgSrc, idx) => {
+            valid.forEach((imgSrc, idx) => {
                 const slide = document.createElement('div');
                 slide.className = 'carousel-slide';
                 const img = document.createElement('img');
@@ -707,7 +706,6 @@
                 img.alt = `Figure ${idx+1}`;
                 slide.appendChild(img);
                 slidesContainer.appendChild(slide);
-                // dot
                 const dot = document.createElement('span');
                 dot.className = 'dot';
                 if (idx === 0) dot.classList.add('active');
@@ -744,35 +742,26 @@
 
         function startAutoPlay() {
             if (autoInterval) clearInterval(autoInterval);
-            autoInterval = setInterval(() => { nextSlide(); }, 4000);
+            autoInterval = setInterval(() => nextSlide(), 4000);
         }
         function resetAutoPlay() {
             if (autoInterval) clearInterval(autoInterval);
-            autoInterval = setInterval(() => { nextSlide(); }, 4000);
+            autoInterval = setInterval(() => nextSlide(), 4000);
         }
 
-        // check images existence (CORS not an issue because same origin)
-        let imagesToLoad = images.slice();
-        let valid = [];
-        let pending = imagesToLoad.length;
-        if (pending === 0) {
-            buildCarousel([]);
-            return;
-        }
-        imagesToLoad.forEach((src) => {
+        let pending = images.length;
+        images.forEach((src) => {
             const img = new Image();
-            img.onload = () => { valid.push(src); onCheckDone(); };
+            img.onload = () => { validImages.push(src); onCheckDone(); };
             img.onerror = () => { onCheckDone(); };
             img.src = src;
         });
         function onCheckDone() {
             pending--;
             if (pending === 0) {
-                buildCarousel(valid);
-                // attach event listeners after carousel built
+                buildCarousel(validImages);
                 document.getElementById('prevBtn')?.addEventListener('click', prevSlide);
                 document.getElementById('nextBtn')?.addEventListener('click', nextSlide);
-                // pause auto on hover
                 const container = document.getElementById('carousel');
                 if (container) {
                     container.addEventListener('mouseenter', () => { if (autoInterval) clearInterval(autoInterval); });
