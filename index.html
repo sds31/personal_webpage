@@ -66,7 +66,7 @@
         .title {
             text-align: center;
             font-weight: 500;
-            color: #3b9bc7;
+            color: #084a90;
             margin-bottom: 1.2rem;
             font-size: 1rem;
         }
@@ -82,7 +82,7 @@
         }
 
         .contact-info a {
-            color: #3b9bc7;
+            color: #084a90;
             text-decoration: none;
             border-bottom: 1px dotted #b0d4e8;
         }
@@ -106,7 +106,7 @@
             margin-top: 0.8rem;
         }
         .social-links a {
-            color: #3b9bc7;
+            color: #084a90;
             text-decoration: none;
             font-size: 0.9rem;
         }
@@ -119,7 +119,7 @@
         }
         .cv-button a {
             display: inline-block;
-            background: #3b9bc7;
+            background: #084a90;
             color: white;
             padding: 10px 16px;
             border-radius: 40px;
@@ -129,7 +129,7 @@
             transition: background 0.2s;
         }
         .cv-button a:hover {
-            background: #1e5a8c;
+            background: #052d59;
         }
 
         /* RIGHT MAIN CONTENT */
@@ -139,7 +139,6 @@
             padding: 0;
         }
 
-        /* HORIZONTAL MENU */
         .top-menu {
             position: sticky;
             top: 0;
@@ -159,7 +158,7 @@
             transition: color 0.2s;
         }
         .top-menu a:hover {
-            color: #3b9bc7;
+            color: #084a90;
         }
 
         .content-section {
@@ -173,85 +172,89 @@
         .section-title {
             font-size: 1.7rem;
             font-weight: 600;
-            color: #3b9bc7;
+            color: #084a90;
             margin-bottom: 1rem;
         }
 
-        /* subsection headings (smaller) */
         .subsection-title {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            color: #3b9bc7;
-            margin-top: 1.8rem;
+            color: #084a90;
+            margin-top: 1.5rem;
             margin-bottom: 0.8rem;
-            border-left: 3px solid #3b9bc7;
+            border-left: 3px solid #084a90;
             padding-left: 0.8rem;
         }
 
-        /* About Me text */
-        .about-text {
-            font-size: 1rem;
-            color: #000000;
-            margin-bottom: 1rem;
-            line-height: 1.6;
+        /* Project card style */
+        .project-item {
+            margin-bottom: 2rem;
         }
-        .research-list {
-            list-style: none;
-            padding-left: 0.5rem;
-            margin: 1rem 0 1rem 0;
-        }
-        .research-list li {
-            margin-bottom: 0.7rem;
-            position: relative;
-            padding-left: 1.4rem;
-        }
-        .research-list li::before {
-            content: "•";
-            color: #3b9bc7;
-            font-weight: bold;
-            font-size: 1.3rem;
-            position: absolute;
-            left: 0;
-            top: -0.15rem;
-        }
-        .hobby-note {
-            margin-top: 1rem;
-            padding-top: 0.5rem;
-            color: #2c3e50;
-        }
-
-        /* new left-right entries for education & appointments */
-        .entry-row {
+        .project-header {
             display: flex;
-            margin-bottom: 1rem;
-            align-items: flex-start;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
         }
-        .entry-left {
-            flex: 0 0 28%;
-            font-weight: normal;
-            color: #000000;
-            font-size: 0.9rem;
-            padding-top: 0.1rem;
-        }
-        .entry-right {
-            flex: 0 0 72%;
-            font-size: 0.9rem;
-            color: #000000;
-        }
-        .entry-right strong {
+        .project-title {
             font-weight: 600;
+            font-size: 1.1rem;
             color: #000000;
         }
-        .entry-detail {
-            margin-top: 0.1rem;
-            line-height: 1.4;
+        .project-duration {
+            font-size: 0.85rem;
+            color: #5a6e8a;
+            white-space: nowrap;
+            margin-left: 1rem;
+        }
+        .project-desc {
+            margin: 0.5rem 0 0.5rem 0;
+            color: #000000;
+        }
+        .findings {
+            margin: 0.5rem 0 0.5rem 0;
+            color: #000000;
+        }
+        .data-link {
+            margin-top: 0.3rem;
+        }
+        .flashing-link {
+            font-weight: bold;
+            animation: blackRedFlash 1s infinite;
+            display: inline-block;
+        }
+        @keyframes blackRedFlash {
+            0% { color: #000000; }
+            50% { color: #ff0000; }
+            100% { color: #000000; }
+        }
+        .data-link a {
+            text-decoration: none;
+        }
+        .advisor {
+            margin: 0.3rem 0;
+            font-size: 0.9rem;
+            color: #000000;
         }
 
-        /* placeholder sections */
-        .placeholder-text {
-            color: #4a627a;
-            font-style: italic;
-            margin-top: 0.5rem;
+        /* Publications list */
+        .pub-list {
+            margin-left: 1.2rem;
+        }
+        .pub-list li {
+            margin-bottom: 0.8rem;
+        }
+        .teaching-item {
+            margin-bottom: 1rem;
+        }
+        .teaching-item a {
+            color: #084a90;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .teaching-item a:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 850px) {
@@ -273,12 +276,12 @@
                 gap: 1rem;
                 justify-content: center;
             }
-            .entry-row {
+            .project-header {
                 flex-direction: column;
-                margin-bottom: 1.2rem;
             }
-            .entry-left {
-                margin-bottom: 0.2rem;
+            .project-duration {
+                white-space: normal;
+                margin-left: 0;
             }
         }
     </style>
@@ -320,7 +323,7 @@
             <a href="#teaching">Teaching</a>
         </div>
 
-        <!-- ABOUT ME (main section) -->
+        <!-- ABOUT ME (existing content) -->
         <div id="about" class="content-section">
             <h2 class="section-title">About Me</h2>
             <div class="about-text">
@@ -337,61 +340,146 @@
                 Apart from work, I enjoy playing football, listening to music and travelling new places.
             </div>
 
-            <!-- EDUCATION subsection (smaller heading) -->
             <h3 class="subsection-title">Education</h3>
             <div class="entry-row">
                 <div class="entry-left">April 2023 – March 2025</div>
-                <div class="entry-right">
-                    <strong>Master of Engineering</strong>, Environmental Science and Civil Engineering <br>
-                    Saitama University, Japan
-                </div>
+                <div class="entry-right"><strong>Master of Engineering</strong>, Environmental Science and Civil Engineering <br> Saitama University, Japan</div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">July 2014 – October 2018</div>
-                <div class="entry-right">
-                    <strong>Bachelor of Science</strong>, Water Resources Engineering <br>
-                    Bangladesh University of Engineering and Technology, Dhaka
-                </div>
+                <div class="entry-right"><strong>Bachelor of Science</strong>, Water Resources Engineering <br> Bangladesh University of Engineering and Technology, Dhaka</div>
             </div>
 
-            <!-- PROFESSIONAL APPOINTMENTS subsection -->
             <h3 class="subsection-title">Professional Appointments</h3>
-            <div class="entry-row">
-                <div class="entry-left">May 2025 – Present</div>
-                <div class="entry-right">
-                    <strong>Adjunct Faculty</strong>, Department of Civil Engineering, Leading University, Sylhet, Bangladesh
-                </div>
-            </div>
-            <div class="entry-row">
-                <div class="entry-left">Jan 2021 – Feb 2023</div>
-                <div class="entry-right">
-                    <strong>Water Resources Engineer</strong>, Environmental Management and Engineering Consultants Ltd. (EMEC), Dhaka, Bangladesh
-                </div>
-            </div>
-            <div class="entry-row">
-                <div class="entry-left">Jan 2019 – Dec 2020</div>
-                <div class="entry-right">
-                    <strong>Research Consultant</strong>, Center for Environmental and Geographic Information Services (CEGIS), Dhaka, Bangladesh
-                </div>
-            </div>
+            <div class="entry-row"><div class="entry-left">May 2025 – Present</div><div class="entry-right"><strong>Adjunct Faculty</strong>, Department of Civil Engineering, Leading University, Sylhet, Bangladesh</div></div>
+            <div class="entry-row"><div class="entry-left">Jan 2021 – Feb 2023</div><div class="entry-right"><strong>Water Resources Engineer</strong>, Environmental Management and Engineering Consultants Ltd. (EMEC), Dhaka, Bangladesh</div></div>
+            <div class="entry-row"><div class="entry-left">Jan 2019 – Dec 2020</div><div class="entry-right"><strong>Research Consultant</strong>, Center for Environmental and Geographic Information Services (CEGIS), Dhaka, Bangladesh</div></div>
         </div>
 
-        <!-- RESEARCH & PROJECTS (placeholder) -->
+        <!-- RESEARCH & PROJECTS -->
         <div id="research" class="content-section">
             <h2 class="section-title">Research & Projects</h2>
-            <div class="placeholder-text">Content coming soon.</div>
+
+            <!-- Academic Subsection -->
+            <h3 class="subsection-title">Academic</h3>
+
+            <!-- Master's Thesis -->
+            <div class="project-item">
+                <div class="project-header">
+                    <span class="project-title">Master’s Thesis: “Effect of Road and Embankment Network on Flood Intensity of Haor Basin in Bangladesh and Possible Solution”</span>
+                    <span class="project-duration">(Apr 2023 – Mar 2025)</span>
+                </div>
+                <div class="project-desc">
+                    <a href="https://drive.google.com/file/d/1gz6WQT8E5bn6arMiNhYRX35htLNnexci/view" target="_blank" style="color:#084a90; font-weight:bold;">[PDF]</a>
+                    &nbsp;|&nbsp;
+                    Advisor: <a href="https://rdb.eva.saitama-u.ac.jp/search/detail.html?systemId=41dd22abcab24a84520e17560c007669&lang=en" target="_blank" style="color:#084a90;">Associate Professor Junji Yagisawa</a>
+                </div>
+                <div class="project-desc">
+                    Developed a 2D hydrodynamic model for a selected river system of Haor Basin using HEC RAS.<br>
+                    Quantified the influence of existing road and embankment network on flood condition.<br>
+                    Evaluated the requirement for additional cross-drainage structures in floodplain.
+                </div>
+                <div class="findings">
+                    <strong>Findings:</strong> Although existing roads and embankments in the floodplain can protect crops in case of low return period pre-monsoon flood, these structures can degrade the upstream flood level and duration significantly during high return period pre-monsoon and monsoon flood. A hydraulic connectivity-based workflow was presented to identify the optimal cross-drainage location along the road network to restore the natural hydrodynamics of floodplain.
+                </div>
+                <div class="data-link">
+                    <span class="flashing-link">Database Directory - Access</span>:
+                    <a href="https://sds31.github.io/Haor-Flood-Analysis-Directory/" target="_blank" style="font-weight:bold; color:#084a90;">https://sds31.github.io/Haor-Flood-Analysis-Directory/</a>
+                </div>
+            </div>
+
+            <!-- Undergraduate Thesis -->
+            <div class="project-item">
+                <div class="project-header">
+                    <span class="project-title">Undergraduate Thesis: “An Experimental Study on Wave Interaction with Vertical Slotted Breakwater”</span>
+                    <span class="project-duration">(Sep 2017 – Oct 2018)</span>
+                </div>
+                <div class="project-desc">
+                    <a href="https://drive.google.com/file/d/1gu6vuod5FYKbOir0w5Vq6Zzt3CxXhEpJ/view" target="_blank" style="color:#084a90; font-weight:bold;">[PDF]</a>
+                    &nbsp;|&nbsp;
+                    Advisor: <a href="https://mataur.buet.ac.bd/home.html" target="_blank" style="color:#084a90;">Professor Md. Ataur Rahman</a>
+                </div>
+                <div class="project-desc">
+                    Analyzed the hydrodynamic performance of single and double wall vertical slotted breakwater for different submergence ratio.
+                </div>
+                <div class="findings">
+                    <strong>Findings:</strong> Wave energy loss in double wall vertical slotted breakwater was 25-30% more than single wall & with 1.2 relative submergence double wall can perform as effective as solid breakwater.
+                </div>
+            </div>
+
+            <!-- Professional Subsection -->
+            <h3 class="subsection-title">Professional</h3>
+
+            <!-- Project 1 -->
+            <div class="project-item">
+                <div class="project-header"><span class="project-title">Project for Planning Capacity Enhancement and Establishment of a Technology Adaptation Cycle on Comprehensive River Management</span><span class="project-duration">(2022-23)</span></div>
+                <div class="project-desc">Thematic mapping of geospatial features of Jamuna, Sangu, and Matamuhuri Rivers. Developed a risk matrix for predicting riverbank erosion risk using the Digital Shoreline Analysis System (DSAS) extension of ArcGIS.</div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-item">
+                <div class="project-header"><span class="project-title">Formulation of Drainage Master plan of Comilla University</span><span class="project-duration">(2022)</span></div>
+                <div class="project-desc">Modelled storm drainage using PC SWMM for different design rainfall event and detailed cost estimation.</div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-item">
+                <div class="project-header"><span class="project-title">Integrated Storm-water Management Plan for Thimphu Thromde</span><span class="project-duration">(2019-20)</span></div>
+                <div class="project-desc">Analyzed historical rainfall and temperature for predicting future trend using exponential interpolation. Generated design rainfall event using Alternating Block Method. Delineated urban catchment, simulated urban storm drainage network using SWMM and criticality assessment of existing network.</div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-item">
+                <div class="project-header"><span class="project-title">Master Plan and Feasibility Study for Ashuganj-Palash Agro-Irrigation Project of BADC-5th Phase</span><span class="project-duration">(2019-20)</span></div>
+                <div class="project-desc">Assessed irrigation water requirement using CROPWAT 8.0. Analyzed dependable flow and water source sustainability using SOBEK.</div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-item">
+                <div class="project-header"><span class="project-title">Action Research on Climate Change Forecasting and Participatory Scenario Development and Assessment of the Agriculture and Fisheries Sectors, Exposure to Climate Risk</span><span class="project-duration">(2019-20)</span></div>
+                <div class="project-desc">Developed methodology and questionnaire formulation for risk assessment and participatory scenario development for climate vulnerability analysis. Field visit: Focal Group Discussion (FGD) and Key Informant Interview.</div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-item">
+                <div class="project-header"><span class="project-title">Technical Assistance on Geo-hazard Risk Assessment in Transportation Sector</span><span class="project-duration">(2019)</span></div>
+                <div class="project-desc">Analyzed meteor-hydrological data: rainfall frequency analysis, design discharge determination using intensity duration frequency (IDF) and SCS Curve Number Method.</div>
+            </div>
         </div>
 
-        <!-- PUBLICATIONS (placeholder) -->
+        <!-- PUBLICATIONS -->
         <div id="publications" class="content-section">
             <h2 class="section-title">Publications</h2>
-            <div class="placeholder-text">Content coming soon.</div>
+            <h3 class="subsection-title">Journal Papers</h3>
+            <ul class="pub-list">
+                <li><strong>Forthcoming</strong><br>
+                    S. D. Shuvro, J. Yagisawa (submitted), “A Hydraulic Connectivity-Based Approach for Optimizing Cross-Drainage along Floodplain Roads: A Case Study from the Haor Basin, Bangladesh”<br>
+                    S. D. Shuvro, M. Ferdousi, S. Khan (in press), “Riverbank Erosion Risk Forecast using Kalman Filter Model for Sangu and Matamuhuri Rivers”, <em>Sustainable Design and Construction: Selected Papers from ICACE2024</em>.
+                </li>
+                <li><strong>Published</strong><br>
+                    S. D. Shuvro, J. Yagisawa (2025), “Effect of Road and Embankment Network on the Flood Intensity of Hoar Basin, Bangladesh”, <em>Journal of Japan Society of Civil Engineers</em>, 13-2, doi: <a href="https://doi.org/10.2208/journalofjsce.24-16102" target="_blank">10.2208/journalofjsce.24-16102</a>.<br>
+                    Sourav Ray, S. Islam, D. R. Tumpa, M. A. Kayum and S. D. Shuvro (2015), “A study on arsenic and copper extraction capacity of Spirodela polyrhiza from water.” <em>Journal of Civil Engineering and Construction Technology</em>, Vol. 6(1), pp. 1-9. doi: <a href="https://doi.org/10.5897/JCECT2014.0342" target="_blank">10.5897/JCECT2014.0342</a>.<br>
+                    Sourav Ray, S. H. Bari, S. D. Shuvro (2015), “Assessment of Water Quality of Goalichara: A Water Quality Index Based Approach.” <em>ARPN Journal of Science and Technology</em>, Vol. 5(7), pp. 336-340.
+                </li>
+            </ul>
+            <h3 class="subsection-title">Conference Proceedings</h3>
+            <ul class="pub-list">
+                <li>S. D. Shuvro, A. Rahaman, T. A. Hossain, A. S. Qadir, F. A. Khan (January 2020), “Assessment of the Irrigation Water Requirement of Ashuganj Agro-Irrigation Project Considering Future Climate Change Scenarios” <em>International Conference on Earth and Environmental Sciences & Technology for Sustainable Development</em>, Dhaka, Bangladesh.</li>
+                <li>S. D. Shuvro, Md. A. Rahman (March 2019), “An Experimental Study on Wave Interaction with Vertical Slotted Breakwater” <em>7th International Conference on Water and Flood Management</em>, Dhaka, Bangladesh.</li>
+            </ul>
         </div>
 
-        <!-- TEACHING (placeholder) -->
+        <!-- TEACHING -->
         <div id="teaching" class="content-section">
             <h2 class="section-title">Teaching</h2>
-            <div class="placeholder-text">Content coming soon.</div>
+            <div class="teaching-item">
+                <strong>CE 2141: Engineering Geology and Geomorphology</strong><br>
+                <a href="https://drive.google.com/drive/folders/1wGI-YelwGMKq1FQMOsvcIKAUM9m2IlhJ" target="_blank">Click here to access all the lectures</a>
+            </div>
+            <div class="teaching-item">
+                <strong>CE 3267: Building Service II: Plumbing</strong><br>
+                <a href="https://drive.google.com/drive/folders/17YIyxBk8-eezqaRR0EGDEyLDwxb--_Us" target="_blank">Click here to access all the lectures</a>
+            </div>
         </div>
     </main>
 </div>
