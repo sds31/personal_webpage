@@ -679,13 +679,13 @@
 </div>
 
 <script>
-    // Image carousel for Fig01.jpg ... Fig10.jpg (only existing files)
+    // Image carousel for Fig.01.jpg ... Fig.10.jpg (only existing files)
     (function() {
         const maxFigs = 10;
         let images = [];
         for (let i = 1; i <= maxFigs; i++) {
             let num = i.toString().padStart(2, '0');
-            images.push(`Fig${num}.jpg`);
+            images.push(`Fig.${num}.jpg`);
         }
         let validImages = [];
         const slidesContainer = document.getElementById('carouselSlides');
@@ -695,7 +695,7 @@
 
         function buildCarousel(valid) {
             if (valid.length === 0) {
-                slidesContainer.innerHTML = '<div style="padding: 2rem; text-align: center;">No images found (Fig01.jpg – Fig10.jpg)</div>';
+                slidesContainer.innerHTML = '<div style="padding: 2rem; text-align: center;">No images found (Fig.01.jpg – Fig.10.jpg)</div>';
                 return;
             }
             valid.forEach((imgSrc, idx) => {
