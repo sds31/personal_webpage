@@ -19,7 +19,7 @@
             font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
             background: #ffffff;
             color: #000000;
-            line-height: 1.5;
+            line-height: 1.6;      /* improved line spacing */
         }
 
         .wrapper {
@@ -51,8 +51,8 @@
             height: 190px;
             object-fit: cover;
             border-radius: 50%;
-            border: 3px solid #7ec8e0;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+            border: 4px solid #084a90;   /* theme color ring */
+            box-shadow: 0 0 0 2px #ffffff, 0 6px 14px rgba(0,0,0,0.1);
         }
 
         .sidebar h1 {
@@ -173,7 +173,7 @@
             font-size: 1.7rem;
             font-weight: 600;
             color: #084a90;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
 
         .subsection-title {
@@ -186,7 +186,61 @@
             padding-left: 0.8rem;
         }
 
-        /* Project card style */
+        /* left-right align for Education & Professional Appointments */
+        .entry-row {
+            display: flex;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+        .entry-left {
+            flex: 0 0 28%;
+            font-weight: normal;
+            color: #000000;
+            font-size: 0.9rem;
+            padding-top: 0.1rem;
+        }
+        .entry-right {
+            flex: 0 0 72%;
+            font-size: 0.9rem;
+            color: #000000;
+        }
+        .entry-right strong {
+            font-weight: 600;
+            color: #000000;
+        }
+
+        /* About Me text */
+        .about-text {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .research-list {
+            list-style: none;
+            padding-left: 0.5rem;
+            margin: 1rem 0 1rem 0;
+        }
+        .research-list li {
+            margin-bottom: 0.7rem;
+            position: relative;
+            padding-left: 1.4rem;
+        }
+        .research-list li::before {
+            content: "•";
+            color: #084a90;
+            font-weight: bold;
+            font-size: 1.3rem;
+            position: absolute;
+            left: 0;
+            top: -0.15rem;
+        }
+        .hobby-note {
+            margin-top: 1rem;
+            padding-top: 0.5rem;
+            color: #2c3e50;
+        }
+
+        /* Academic project cards */
         .project-item {
             margin-bottom: 2rem;
         }
@@ -199,7 +253,7 @@
         }
         .project-title {
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #000000;
         }
         .project-duration {
@@ -208,13 +262,10 @@
             white-space: nowrap;
             margin-left: 1rem;
         }
-        .project-desc {
+        .project-desc, .findings {
             margin: 0.5rem 0 0.5rem 0;
             color: #000000;
-        }
-        .findings {
-            margin: 0.5rem 0 0.5rem 0;
-            color: #000000;
+            line-height: 1.5;
         }
         .data-link {
             margin-top: 0.3rem;
@@ -229,22 +280,44 @@
             50% { color: #ff0000; }
             100% { color: #000000; }
         }
-        .data-link a {
-            text-decoration: none;
-        }
         .advisor {
             margin: 0.3rem 0;
             font-size: 0.9rem;
+        }
+
+        /* Professional projects – structured as screenshot */
+        .proj-card {
+            margin-bottom: 1.8rem;
+        }
+        .proj-title {
+            font-weight: 600;
+            font-size: 1rem;
             color: #000000;
+            margin-bottom: 0.2rem;
+        }
+        .proj-year {
+            font-size: 0.85rem;
+            color: #5a6e8a;
+            margin-bottom: 0.5rem;
+        }
+        .proj-desc {
+            margin-left: 1.2rem;
+            list-style-type: disc;
+            padding-left: 0.5rem;
+        }
+        .proj-desc li {
+            margin-bottom: 0.4rem;
+            line-height: 1.5;
         }
 
         /* Publications list */
         .pub-list {
-            margin-left: 1.2rem;
+            margin-left: 1.5rem;
         }
         .pub-list li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
         }
+
         .teaching-item {
             margin-bottom: 1rem;
         }
@@ -282,6 +355,13 @@
             .project-duration {
                 white-space: normal;
                 margin-left: 0;
+            }
+            .entry-row {
+                flex-direction: column;
+                margin-bottom: 1.2rem;
+            }
+            .entry-left {
+                margin-bottom: 0.2rem;
             }
         }
     </style>
@@ -323,7 +403,7 @@
             <a href="#teaching">Teaching</a>
         </div>
 
-        <!-- ABOUT ME (existing content) -->
+        <!-- ABOUT ME -->
         <div id="about" class="content-section">
             <h2 class="section-title">About Me</h2>
             <div class="about-text">
@@ -360,7 +440,6 @@
         <div id="research" class="content-section">
             <h2 class="section-title">Research & Projects</h2>
 
-            <!-- Academic Subsection -->
             <h3 class="subsection-title">Academic</h3>
 
             <!-- Master's Thesis -->
@@ -407,44 +486,62 @@
                 </div>
             </div>
 
-            <!-- Professional Subsection -->
             <h3 class="subsection-title">Professional</h3>
 
-            <!-- Project 1 -->
-            <div class="project-item">
-                <div class="project-header"><span class="project-title">Project for Planning Capacity Enhancement and Establishment of a Technology Adaptation Cycle on Comprehensive River Management</span><span class="project-duration">(2022-23)</span></div>
-                <div class="project-desc">Thematic mapping of geospatial features of Jamuna, Sangu, and Matamuhuri Rivers. Developed a risk matrix for predicting riverbank erosion risk using the Digital Shoreline Analysis System (DSAS) extension of ArcGIS.</div>
+            <!-- Professional projects with bullet points, year below title left-aligned -->
+            <div class="proj-card">
+                <div class="proj-title">Project for Planning Capacity Enhancement and Establishment of a Technology Adaptation Cycle on Comprehensive River Management</div>
+                <div class="proj-year">(2022-23)</div>
+                <ul class="proj-desc">
+                    <li>Thematic mapping of geospatial features of Jamuna, Sangu, and Matamuhuri Rivers.</li>
+                    <li>Developed a risk matrix for predicting riverbank erosion risk using the Digital Shoreline Analysis System (DSAS) extension of ArcGIS.</li>
+                </ul>
             </div>
 
-            <!-- Project 2 -->
-            <div class="project-item">
-                <div class="project-header"><span class="project-title">Formulation of Drainage Master plan of Comilla University</span><span class="project-duration">(2022)</span></div>
-                <div class="project-desc">Modelled storm drainage using PC SWMM for different design rainfall event and detailed cost estimation.</div>
+            <div class="proj-card">
+                <div class="proj-title">Formulation of Drainage Master plan of Comilla University</div>
+                <div class="proj-year">(2022)</div>
+                <ul class="proj-desc">
+                    <li>Modelled storm drainage using PC SWMM for different design rainfall event and detailed cost estimation.</li>
+                </ul>
             </div>
 
-            <!-- Project 3 -->
-            <div class="project-item">
-                <div class="project-header"><span class="project-title">Integrated Storm-water Management Plan for Thimphu Thromde</span><span class="project-duration">(2019-20)</span></div>
-                <div class="project-desc">Analyzed historical rainfall and temperature for predicting future trend using exponential interpolation. Generated design rainfall event using Alternating Block Method. Delineated urban catchment, simulated urban storm drainage network using SWMM and criticality assessment of existing network.</div>
+            <div class="proj-card">
+                <div class="proj-title">Integrated Storm-water Management Plan for Thimphu Thromde</div>
+                <div class="proj-year">(2019-20)</div>
+                <ul class="proj-desc">
+                    <li>Analyzed of historical rainfall and temperature for predicting future trend using exponential interpolation.</li>
+                    <li>Generated design rainfall event using Alternating Block Method.</li>
+                    <li>Delineated urban catchment, simulated urban storm drainage network using SWMM and criticality assessment of existing network.</li>
+                </ul>
             </div>
 
-            <!-- Project 4 -->
-            <div class="project-item">
-                <div class="project-header"><span class="project-title">Master Plan and Feasibility Study for Ashuganj-Palash Agro-Irrigation Project of BADC-5th Phase</span><span class="project-duration">(2019-20)</span></div>
-                <div class="project-desc">Assessed irrigation water requirement using CROPWAT 8.0. Analyzed dependable flow and water source sustainability using SOBEK.</div>
+            <div class="proj-card">
+                <div class="proj-title">Master Plan and Feasibility Study for Ashuganj-Palash Agro-Irrigation Project of BADC-5th Phase</div>
+                <div class="proj-year">(2019-20)</div>
+                <ul class="proj-desc">
+                    <li>Assessed irrigation water requirement using CROPWAT 8.0.</li>
+                    <li>Analyzed dependable flow and water source sustainability using SOBEK.</li>
+                </ul>
             </div>
 
-            <!-- Project 5 -->
-            <div class="project-item">
-                <div class="project-header"><span class="project-title">Action Research on Climate Change Forecasting and Participatory Scenario Development and Assessment of the Agriculture and Fisheries Sectors, Exposure to Climate Risk</span><span class="project-duration">(2019-20)</span></div>
-                <div class="project-desc">Developed methodology and questionnaire formulation for risk assessment and participatory scenario development for climate vulnerability analysis. Field visit: Focal Group Discussion (FGD) and Key Informant Interview.</div>
+            <div class="proj-card">
+                <div class="proj-title">Action Research on Climate Change Forecasting and Participatory Scenario Development and Assessment of the Agriculture and Fisheries Sectors, Exposure to Climate Risk</div>
+                <div class="proj-year">(2019-20)</div>
+                <ul class="proj-desc">
+                    <li>Developed methodology and questionnaire formulation for risk assessment and participatory scenario development for climate vulnerability analysis.</li>
+                    <li>Field visit: Focal Group Discussion (FGD) and Key Informant Interview.</li>
+                </ul>
             </div>
 
-            <!-- Project 6 -->
-            <div class="project-item">
-                <div class="project-header"><span class="project-title">Technical Assistance on Geo-hazard Risk Assessment in Transportation Sector</span><span class="project-duration">(2019)</span></div>
-                <div class="project-desc">Analyzed meteor-hydrological data: rainfall frequency analysis, design discharge determination using intensity duration frequency (IDF) and SCS Curve Number Method.</div>
+            <div class="proj-card">
+                <div class="proj-title">Technical Assistance on Geo-hazard Risk Assessment in Transportation Sector</div>
+                <div class="proj-year">(2019)</div>
+                <ul class="proj-desc">
+                    <li>Analyzed meteor-hydrological data: rainfall frequency analysis, design discharge determination using intensity duration frequency (IDF) and SCS Curve Number Method.</li>
+                </ul>
             </div>
+
         </div>
 
         <!-- PUBLICATIONS -->
