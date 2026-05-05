@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sowmitra Das Shuvro | Flood & Water Resources Researcher</title>
+    <title>Sowmitra Das Shuvro | Water Resources Researcher</title>
     <style>
         * {
             margin: 0;
@@ -11,29 +11,35 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
             background: #ffffff;
-            color: #000000;
+            color: #000000;   /* dark black text */
             line-height: 1.5;
         }
 
-        .container {
+        /* FLEX CONTAINER FOR SIDEBAR + MAIN */
+        .wrapper {
             display: flex;
-            flex-wrap: wrap;
-            width: 100%;
-            max-width: 100%;
-            margin: 0;
-            background: #ffffff;
             min-height: 100vh;
         }
 
-        /* LEFT SIDEBAR (30%) */
+        /* LEFT SIDEBAR – FIXED, NO SCROLL */
         .sidebar {
-            flex: 0 0 30%;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 30%;
             background: #ffffff;
             padding: 2rem 1.8rem;
             border-right: 1px solid #e0e7f0;
+            overflow-y: auto;     /* allows own scroll if content overflows, but usually fine */
+            display: flex;
+            flex-direction: column;
         }
 
         .profile-img {
@@ -42,11 +48,11 @@
         }
 
         .profile-img img {
-            width: 160px;
-            height: 160px;
+            width: 190px;          /* slightly bigger */
+            height: 190px;
             object-fit: cover;
             border-radius: 50%;
-            border: 3px solid #1e5a8c;
+            border: 3px solid #7ec8e0;   /* sky blue border */
             box-shadow: 0 6px 14px rgba(0,0,0,0.05);
         }
 
@@ -61,7 +67,7 @@
         .title {
             text-align: center;
             font-weight: 500;
-            color: #1e5a8c;
+            color: #3b9bc7;        /* sky blue */
             margin-bottom: 1.2rem;
             font-size: 1rem;
         }
@@ -69,7 +75,7 @@
         .affiliation, .contact-info {
             margin-top: 1.2rem;
             font-size: 0.9rem;
-            color: #2c3e50;
+            color: #000000;
         }
 
         .affiliation p, .contact-info p {
@@ -77,13 +83,13 @@
         }
 
         .contact-info a {
-            color: #1e5a8c;
+            color: #3b9bc7;
             text-decoration: none;
-            border-bottom: 1px dotted #9aaebf;
+            border-bottom: 1px dotted #b0d4e8;
         }
 
         .contact-info a:hover {
-            color: #0f3b2c;
+            color: #1e5a8c;
             border-bottom-style: solid;
         }
 
@@ -94,25 +100,88 @@
             background: #e0e7f0;
         }
 
-        /* RIGHT CONTENT (70%) */
-        .main-content {
-            flex: 0 0 70%;
-            padding: 2rem 2.2rem;
-            background: #ffffff;
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-top: 0.8rem;
+        }
+        .social-links a {
+            color: #3b9bc7;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .social-links a:hover {
+            text-decoration: underline;
         }
 
-        /* About Me – simple, full width (no left-right split) */
-        .about-section {
-            margin-bottom: 2rem;
+        .cv-button {
+            margin-top: 1.5rem;
         }
-        .about-section h2 {
+        .cv-button a {
+            display: inline-block;
+            background: #3b9bc7;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        .cv-button a:hover {
+            background: #1e5a8c;
+        }
+
+        /* RIGHT MAIN CONTENT */
+        .main-content {
+            width: 70%;
+            background: #ffffff;
+            padding: 0;
+        }
+
+        /* HORIZONTAL MENU (sticky on top of main content) */
+        .top-menu {
+            position: sticky;
+            top: 0;
+            background: #ffffff;
+            border-bottom: 1px solid #e0e7f0;
+            padding: 0.8rem 2rem;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            z-index: 100;
+        }
+        .top-menu a {
+            text-decoration: none;
+            color: #0a2b3e;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+        .top-menu a:hover {
+            color: #3b9bc7;
+        }
+
+        /* content sections */
+        .content-section {
+            padding: 2rem 2.5rem 2rem 2.5rem;
+            border-bottom: 1px solid #f0f2f5;
+        }
+        .content-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
             font-size: 1.7rem;
             font-weight: 600;
-            color: #1e5a8c;
-            border-left: 4px solid #1e5a8c;
-            padding-left: 1rem;
+            color: #3b9bc7;      /* sky blue */
             margin-bottom: 1rem;
+            border-left: none;
+            padding-left: 0;
         }
+
+        /* About Me text */
         .about-text {
             font-size: 1rem;
             color: #000000;
@@ -131,7 +200,7 @@
         }
         .research-list li::before {
             content: "•";
-            color: #1e5a8c;
+            color: #3b9bc7;
             font-weight: bold;
             font-size: 1.3rem;
             position: absolute;
@@ -144,20 +213,20 @@
             color: #2c3e50;
         }
 
-        /* Education & Professional Appointments – left-right split */
+        /* Education & Appointments (left-right split) */
         .section-row {
             display: flex;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             flex-wrap: wrap;
         }
-        .section-heading {
+        .section-row-heading {
             flex: 0 0 28%;
             font-weight: 600;
-            font-size: 1.2rem;
-            color: #1e5a8c;
+            font-size: 1rem;
+            color: #3b9bc7;
             padding-top: 0.1rem;
         }
-        .section-content {
+        .section-row-content {
             flex: 0 0 72%;
         }
         .education-item, .appointment-item {
@@ -166,11 +235,11 @@
         .degree-title {
             font-weight: 600;
             font-size: 1rem;
-            color: #0a2b3e;
+            color: #000000;
         }
         .degree-detail {
             font-size: 0.9rem;
-            color: #2c3e50;
+            color: #000000;
             margin-top: 0.2rem;
         }
         .date {
@@ -180,34 +249,50 @@
         }
         .institution {
             font-weight: 500;
+            color: #000000;
+        }
+
+        /* placeholder sections */
+        .placeholder-text {
+            color: #4a627a;
+            font-style: italic;
+            margin-top: 0.5rem;
         }
 
         @media (max-width: 850px) {
-            .container {
+            .wrapper {
                 flex-direction: column;
             }
-            .sidebar, .main-content {
-                flex: 0 0 100%;
-                border-right: none;
-            }
             .sidebar {
+                position: relative;
+                height: auto;
+                width: 100%;
+                border-right: none;
                 border-bottom: 1px solid #e0e7f0;
+            }
+            .main-content {
+                width: 100%;
+            }
+            .top-menu {
+                padding: 0.8rem 1rem;
+                gap: 1rem;
+                justify-content: center;
             }
             .section-row {
                 flex-direction: column;
             }
-            .section-heading {
+            .section-row-heading {
                 margin-bottom: 0.5rem;
             }
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <!-- LEFT SIDEBAR -->
+<div class="wrapper">
+    <!-- LEFT SIDEBAR (fixed vertically) -->
     <aside class="sidebar">
         <div class="profile-img">
-            <img src="sowmitra.jpg" alt="Sowmitra Das Shuvro" onerror="this.onerror=null; this.src='https://via.placeholder.com/160?text=Photo';">
+            <img src="sowmitra.jpg" alt="Sowmitra Das Shuvro" onerror="this.onerror=null; this.src='https://via.placeholder.com/190?text=Photo';">
         </div>
         <h1>Sowmitra Das Shuvro</h1>
         <div class="title">Adjunct Faculty</div>
@@ -222,13 +307,29 @@
             <p>📧 <a href="mailto:dshuvro31@gmail.com">dshuvro31@gmail.com</a></p>
             <p>📞 +880-1339-716034</p>
         </div>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/sdshuvro/" target="_blank">🔗 LinkedIn</a>
+            <a href="https://scholar.google.com/citations?user=GpwZdJsAAAAJ&hl=en" target="_blank">🎓 Google Scholar</a>
+            <a href="https://github.com/sds31" target="_blank">🐙 GitHub</a>
+        </div>
+        <div class="cv-button">
+            <a href="https://drive.google.com/file/d/1eG-KWXMMNKQBnERnsqkT0C40qNbbBl8A/view" target="_blank">📄 Download CV</a>
+        </div>
     </aside>
 
     <!-- RIGHT MAIN CONTENT -->
     <main class="main-content">
-        <!-- About Me section (simple, as before) -->
-        <div class="about-section">
-            <h2>About Me</h2>
+        <!-- Horizontal menu for same-page navigation -->
+        <div class="top-menu">
+            <a href="#about">About Me</a>
+            <a href="#research">Research & Projects</a>
+            <a href="#publications">Publications</a>
+            <a href="#teaching">Teaching</a>
+        </div>
+
+        <!-- ABOUT ME SECTION (no bar line) -->
+        <div id="about" class="content-section">
+            <h2 class="section-title">About Me</h2>
             <div class="about-text">
                 I am an engineer, researcher and educator from Bangladesh. My areas of expertise are flood risk management, erosion risk prediction, urban storm drainage, irrigation network designing etc. I am interested in application of hydrologic and hydraulic models, geospatial analysis and machine learning models for solving complex water resources issues.
             </div>
@@ -244,45 +345,69 @@
             </div>
         </div>
 
-        <!-- Education section (left-right) -->
-        <div class="section-row">
-            <div class="section-heading">Education</div>
-            <div class="section-content">
-                <div class="education-item">
-                    <div class="degree-title">Master of Engineering</div>
+        <!-- EDUCATION (left-right split) -->
+        <div id="education" class="content-section">
+            <h2 class="section-title">Education</h2>
+            <div class="section-row">
+                <div class="section-row-heading">Master of Engineering</div>
+                <div class="section-row-content">
                     <div class="degree-detail">Environmental Science and Civil Engineering</div>
-                    <div class="date">April 2023 - March 2025</div>
+                    <div class="date">April 2023 – March 2025</div>
                     <div class="institution">Saitama University, Japan</div>
                 </div>
-                <div class="education-item">
-                    <div class="degree-title">Bachelor of Science</div>
+            </div>
+            <div class="section-row">
+                <div class="section-row-heading">Bachelor of Science</div>
+                <div class="section-row-content">
                     <div class="degree-detail">Water Resources Engineering</div>
-                    <div class="date">July 2014 - October 2018</div>
+                    <div class="date">July 2014 – October 2018</div>
                     <div class="institution">Bangladesh University of Engineering and Technology, Dhaka.</div>
                 </div>
             </div>
         </div>
 
-        <!-- Professional Appointments section (left-right) -->
-        <div class="section-row">
-            <div class="section-heading">Professional Appointments</div>
-            <div class="section-content">
-                <div class="appointment-item">
-                    <div class="degree-title">Adjunct Faculty</div>
+        <!-- PROFESSIONAL APPOINTMENTS (left-right split) -->
+        <div id="professional" class="content-section">
+            <h2 class="section-title">Professional Appointments</h2>
+            <div class="section-row">
+                <div class="section-row-heading">Adjunct Faculty</div>
+                <div class="section-row-content">
                     <div class="degree-detail">Department of Civil Engineering, Leading University, Sylhet, Bangladesh.</div>
                     <div class="date">May 2025 – Present</div>
                 </div>
-                <div class="appointment-item">
-                    <div class="degree-title">Water Resources Engineer</div>
+            </div>
+            <div class="section-row">
+                <div class="section-row-heading">Water Resources Engineer</div>
+                <div class="section-row-content">
                     <div class="degree-detail">Environmental Management and Engineering Consultants Ltd. (EMEC), Dhaka, Bangladesh.</div>
                     <div class="date">Jan 2021 – Feb 2023</div>
                 </div>
-                <div class="appointment-item">
-                    <div class="degree-title">Research Consultant</div>
+            </div>
+            <div class="section-row">
+                <div class="section-row-heading">Research Consultant</div>
+                <div class="section-row-content">
                     <div class="degree-detail">Center for Environmental and Geographic Information Services (CEGIS), Dhaka, Bangladesh.</div>
                     <div class="date">Jan 2019 – Dec 2020</div>
                 </div>
             </div>
+        </div>
+
+        <!-- RESEARCH & PROJECTS (placeholder) -->
+        <div id="research" class="content-section">
+            <h2 class="section-title">Research & Projects</h2>
+            <div class="placeholder-text">[Content coming soon]</div>
+        </div>
+
+        <!-- PUBLICATIONS (placeholder) -->
+        <div id="publications" class="content-section">
+            <h2 class="section-title">Publications</h2>
+            <div class="placeholder-text">[Content coming soon]</div>
+        </div>
+
+        <!-- TEACHING (placeholder) -->
+        <div id="teaching" class="content-section">
+            <h2 class="section-title">Teaching</h2>
+            <div class="placeholder-text">[Content coming soon]</div>
         </div>
     </main>
 </div>
