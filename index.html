@@ -18,17 +18,16 @@
         body {
             font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
             background: #ffffff;
-            color: #000000;   /* dark black text */
+            color: #000000;
             line-height: 1.5;
         }
 
-        /* FLEX CONTAINER FOR SIDEBAR + MAIN */
         .wrapper {
             display: flex;
             min-height: 100vh;
         }
 
-        /* LEFT SIDEBAR – FIXED, NO SCROLL */
+        /* LEFT SIDEBAR – FIXED */
         .sidebar {
             position: sticky;
             top: 0;
@@ -37,7 +36,7 @@
             background: #ffffff;
             padding: 2rem 1.8rem;
             border-right: 1px solid #e0e7f0;
-            overflow-y: auto;     /* allows own scroll if content overflows, but usually fine */
+            overflow-y: auto;
             display: flex;
             flex-direction: column;
         }
@@ -48,11 +47,11 @@
         }
 
         .profile-img img {
-            width: 190px;          /* slightly bigger */
+            width: 190px;
             height: 190px;
             object-fit: cover;
             border-radius: 50%;
-            border: 3px solid #7ec8e0;   /* sky blue border */
+            border: 3px solid #7ec8e0;
             box-shadow: 0 6px 14px rgba(0,0,0,0.05);
         }
 
@@ -67,7 +66,7 @@
         .title {
             text-align: center;
             font-weight: 500;
-            color: #3b9bc7;        /* sky blue */
+            color: #3b9bc7;
             margin-bottom: 1.2rem;
             font-size: 1rem;
         }
@@ -140,7 +139,7 @@
             padding: 0;
         }
 
-        /* HORIZONTAL MENU (sticky on top of main content) */
+        /* HORIZONTAL MENU */
         .top-menu {
             position: sticky;
             top: 0;
@@ -163,7 +162,6 @@
             color: #3b9bc7;
         }
 
-        /* content sections */
         .content-section {
             padding: 2rem 2.5rem 2rem 2.5rem;
             border-bottom: 1px solid #f0f2f5;
@@ -175,10 +173,19 @@
         .section-title {
             font-size: 1.7rem;
             font-weight: 600;
-            color: #3b9bc7;      /* sky blue */
+            color: #3b9bc7;
             margin-bottom: 1rem;
-            border-left: none;
-            padding-left: 0;
+        }
+
+        /* subsection headings (smaller) */
+        .subsection-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #3b9bc7;
+            margin-top: 1.8rem;
+            margin-bottom: 0.8rem;
+            border-left: 3px solid #3b9bc7;
+            padding-left: 0.8rem;
         }
 
         /* About Me text */
@@ -213,43 +220,31 @@
             color: #2c3e50;
         }
 
-        /* Education & Appointments (left-right split) */
-        .section-row {
+        /* new left-right entries for education & appointments */
+        .entry-row {
             display: flex;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
+            margin-bottom: 1rem;
+            align-items: flex-start;
         }
-        .section-row-heading {
+        .entry-left {
             flex: 0 0 28%;
-            font-weight: 600;
-            font-size: 1rem;
-            color: #3b9bc7;
+            font-weight: normal;
+            color: #000000;
+            font-size: 0.9rem;
             padding-top: 0.1rem;
         }
-        .section-row-content {
+        .entry-right {
             flex: 0 0 72%;
-        }
-        .education-item, .appointment-item {
-            margin-bottom: 1.2rem;
-        }
-        .degree-title {
-            font-weight: 600;
-            font-size: 1rem;
-            color: #000000;
-        }
-        .degree-detail {
             font-size: 0.9rem;
             color: #000000;
-            margin-top: 0.2rem;
         }
-        .date {
-            font-size: 0.85rem;
-            color: #5a6e8a;
-            margin: 0.2rem 0;
-        }
-        .institution {
-            font-weight: 500;
+        .entry-right strong {
+            font-weight: 600;
             color: #000000;
+        }
+        .entry-detail {
+            margin-top: 0.1rem;
+            line-height: 1.4;
         }
 
         /* placeholder sections */
@@ -278,18 +273,18 @@
                 gap: 1rem;
                 justify-content: center;
             }
-            .section-row {
+            .entry-row {
                 flex-direction: column;
+                margin-bottom: 1.2rem;
             }
-            .section-row-heading {
-                margin-bottom: 0.5rem;
+            .entry-left {
+                margin-bottom: 0.2rem;
             }
         }
     </style>
 </head>
 <body>
 <div class="wrapper">
-    <!-- LEFT SIDEBAR (fixed vertically) -->
     <aside class="sidebar">
         <div class="profile-img">
             <img src="sowmitra.jpg" alt="Sowmitra Das Shuvro" onerror="this.onerror=null; this.src='https://via.placeholder.com/190?text=Photo';">
@@ -317,9 +312,7 @@
         </div>
     </aside>
 
-    <!-- RIGHT MAIN CONTENT -->
     <main class="main-content">
-        <!-- Horizontal menu for same-page navigation -->
         <div class="top-menu">
             <a href="#about">About Me</a>
             <a href="#research">Research & Projects</a>
@@ -327,11 +320,11 @@
             <a href="#teaching">Teaching</a>
         </div>
 
-        <!-- ABOUT ME SECTION (no bar line) -->
+        <!-- ABOUT ME (main section) -->
         <div id="about" class="content-section">
             <h2 class="section-title">About Me</h2>
             <div class="about-text">
-                I am an engineer, researcher and educator from Bangladesh. My areas of expertise are flood risk management, erosion risk prediction, urban storm drainage, irrigation network designing etc. I am interested in application of hydrologic and hydraulic models, geospatial analysis and machine learning models for solving complex water resources issues.
+                I am an engineer, researcher and educator from Bangladesh. My work sits at the intersection of water resources engineering, computational modeling, and geospatial analysis, with a core focus on understanding and mitigating flood and erosion hazards in climate‑sensitive landscapes. I am driven by the need to turn complex environmental data into actionable insights—whether that means optimizing drainage networks in rural floodplains, forecasting riverbank migration, or designing stormwater systems for rapidly urbanizing catchments.
             </div>
             <div class="about-text">
                 Through my research I aim to address following aspects:
@@ -343,51 +336,42 @@
             <div class="hobby-note">
                 Apart from work, I enjoy playing football, listening to music and travelling new places.
             </div>
-        </div>
 
-        <!-- EDUCATION (left-right split) -->
-        <div id="education" class="content-section">
-            <h2 class="section-title">Education</h2>
-            <div class="section-row">
-                <div class="section-row-heading">Master of Engineering</div>
-                <div class="section-row-content">
-                    <div class="degree-detail">Environmental Science and Civil Engineering</div>
-                    <div class="date">April 2023 – March 2025</div>
-                    <div class="institution">Saitama University, Japan</div>
+            <!-- EDUCATION subsection (smaller heading) -->
+            <h3 class="subsection-title">Education</h3>
+            <div class="entry-row">
+                <div class="entry-left">April 2023 – March 2025</div>
+                <div class="entry-right">
+                    <strong>Master of Engineering</strong>, Environmental Science and Civil Engineering <br>
+                    Saitama University, Japan
                 </div>
             </div>
-            <div class="section-row">
-                <div class="section-row-heading">Bachelor of Science</div>
-                <div class="section-row-content">
-                    <div class="degree-detail">Water Resources Engineering</div>
-                    <div class="date">July 2014 – October 2018</div>
-                    <div class="institution">Bangladesh University of Engineering and Technology, Dhaka.</div>
+            <div class="entry-row">
+                <div class="entry-left">July 2014 – October 2018</div>
+                <div class="entry-right">
+                    <strong>Bachelor of Science</strong>, Water Resources Engineering <br>
+                    Bangladesh University of Engineering and Technology, Dhaka
                 </div>
             </div>
-        </div>
 
-        <!-- PROFESSIONAL APPOINTMENTS (left-right split) -->
-        <div id="professional" class="content-section">
-            <h2 class="section-title">Professional Appointments</h2>
-            <div class="section-row">
-                <div class="section-row-heading">Adjunct Faculty</div>
-                <div class="section-row-content">
-                    <div class="degree-detail">Department of Civil Engineering, Leading University, Sylhet, Bangladesh.</div>
-                    <div class="date">May 2025 – Present</div>
+            <!-- PROFESSIONAL APPOINTMENTS subsection -->
+            <h3 class="subsection-title">Professional Appointments</h3>
+            <div class="entry-row">
+                <div class="entry-left">May 2025 – Present</div>
+                <div class="entry-right">
+                    <strong>Adjunct Faculty</strong>, Department of Civil Engineering, Leading University, Sylhet, Bangladesh
                 </div>
             </div>
-            <div class="section-row">
-                <div class="section-row-heading">Water Resources Engineer</div>
-                <div class="section-row-content">
-                    <div class="degree-detail">Environmental Management and Engineering Consultants Ltd. (EMEC), Dhaka, Bangladesh.</div>
-                    <div class="date">Jan 2021 – Feb 2023</div>
+            <div class="entry-row">
+                <div class="entry-left">Jan 2021 – Feb 2023</div>
+                <div class="entry-right">
+                    <strong>Water Resources Engineer</strong>, Environmental Management and Engineering Consultants Ltd. (EMEC), Dhaka, Bangladesh
                 </div>
             </div>
-            <div class="section-row">
-                <div class="section-row-heading">Research Consultant</div>
-                <div class="section-row-content">
-                    <div class="degree-detail">Center for Environmental and Geographic Information Services (CEGIS), Dhaka, Bangladesh.</div>
-                    <div class="date">Jan 2019 – Dec 2020</div>
+            <div class="entry-row">
+                <div class="entry-left">Jan 2019 – Dec 2020</div>
+                <div class="entry-right">
+                    <strong>Research Consultant</strong>, Center for Environmental and Geographic Information Services (CEGIS), Dhaka, Bangladesh
                 </div>
             </div>
         </div>
@@ -395,19 +379,19 @@
         <!-- RESEARCH & PROJECTS (placeholder) -->
         <div id="research" class="content-section">
             <h2 class="section-title">Research & Projects</h2>
-            <div class="placeholder-text">[Content coming soon]</div>
+            <div class="placeholder-text">Content coming soon.</div>
         </div>
 
         <!-- PUBLICATIONS (placeholder) -->
         <div id="publications" class="content-section">
             <h2 class="section-title">Publications</h2>
-            <div class="placeholder-text">[Content coming soon]</div>
+            <div class="placeholder-text">Content coming soon.</div>
         </div>
 
         <!-- TEACHING (placeholder) -->
         <div id="teaching" class="content-section">
             <h2 class="section-title">Teaching</h2>
-            <div class="placeholder-text">[Content coming soon]</div>
+            <div class="placeholder-text">Content coming soon.</div>
         </div>
     </main>
 </div>
