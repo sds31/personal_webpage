@@ -82,7 +82,7 @@
 
         .affiliation, .contact-info {
             margin-top: 1.2rem;
-            font-size: 0.9rem;
+            font-size: 1rem;        /* increased */
             color: #000000;
         }
 
@@ -117,7 +117,7 @@
         .social-links a {
             color: #084a90;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 1rem;        /* increased */
         }
         .social-links a:hover {
             text-decoration: underline;
@@ -134,7 +134,7 @@
             border-radius: 40px;
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.85rem;
+            font-size: 1rem;        /* increased */
             transition: background 0.2s;
         }
         .cv-button a:hover {
@@ -227,17 +227,19 @@
             margin-bottom: 1rem;
             line-height: 1.6;
         }
-        .research-list {
+
+        /* Custom bullet list (blue circle) for all bullet points */
+        .research-list, .custom-bullet-list, .pub-list {
             list-style: none;
             padding-left: 0.5rem;
             margin: 1rem 0 1rem 0;
         }
-        .research-list li {
+        .research-list li, .custom-bullet-list li, .pub-list li {
             margin-bottom: 0.7rem;
             position: relative;
             padding-left: 1.4rem;
         }
-        .research-list li::before {
+        .research-list li::before, .custom-bullet-list li::before, .pub-list li::before {
             content: "•";
             color: #084a90;
             font-weight: bold;
@@ -246,6 +248,7 @@
             left: 0;
             top: -0.15rem;
         }
+
         .hobby-note {
             margin-top: 1rem;
             padding-top: 0.5rem;
@@ -279,6 +282,14 @@
             color: #000000;
             line-height: 1.5;
         }
+        /* No bullet for findings – plain paragraph */
+        .findings {
+            margin-left: 0;
+            padding-left: 0;
+        }
+        .findings strong {
+            font-weight: 700;
+        }
         .data-link {
             margin-top: 0.3rem;
         }
@@ -300,7 +311,7 @@
         }
         .embed-map iframe {
             width: 100%;
-            height: 400px;
+            height: 480px;   /* increased by 20% (from 400px) */
             border: 0;
         }
 
@@ -323,7 +334,7 @@
         }
         .carousel-slide img {
             width: 100%;
-            max-height: 400px;
+            max-height: 480px;   /* increased */
             object-fit: contain;
             background: #f8f9fa;
         }
@@ -366,7 +377,28 @@
             background: #084a90;
         }
 
-        /* Professional projects */
+        /* Professional projects – use custom bullets */
+        .proj-desc {
+            list-style: none;
+            padding-left: 1.8rem;
+            margin: 0.5rem 0;
+        }
+        .proj-desc li {
+            position: relative;
+            margin-bottom: 0.4rem;
+            line-height: 1.5;
+            padding-left: 1.2rem;
+        }
+        .proj-desc li::before {
+            content: "•";
+            color: #084a90;
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -0.1rem;
+        }
+
         .proj-card {
             margin-bottom: 1.8rem;
         }
@@ -381,22 +413,10 @@
             color: #5a6e8a;
             margin-bottom: 0.5rem;
         }
-        .proj-desc {
-            margin-left: 1.2rem;
-            list-style-type: disc;
-            padding-left: 0.5rem;
-        }
-        .proj-desc li {
-            margin-bottom: 0.4rem;
-            line-height: 1.5;
-        }
 
-        /* Publications */
+        /* Publications list already uses custom bullets via .pub-list */
         .pub-list {
-            margin-left: 1.5rem;
-        }
-        .pub-list li {
-            margin-bottom: 1rem;
+            margin-left: 0;
         }
         .author-bold {
             font-weight: 700;
@@ -546,13 +566,13 @@
                     &nbsp;|&nbsp;
                     Advisor: <a href="https://rdb.eva.saitama-u.ac.jp/search/detail.html?systemId=41dd22abcab24a84520e17560c007669&lang=en" target="_blank" style="color:#084a90;">Associate Professor Junji Yagisawa</a>
                 </div>
-                <div class="project-desc">
-                    <li>Developed a 2D hydrodynamic model for a selected river system of Haor Basin using HEC RAS.<br>
-                    <li>Quantified the influence of existing road and embankment network on flood condition.<br>
-                    <li>Evaluated the requirement for additional cross-drainage structures in floodplain.
-                </div>
+                <ul class="custom-bullet-list">
+                    <li>Developed a 2D hydrodynamic model for a selected river system of Haor Basin using HEC RAS.</li>
+                    <li>Quantified the influence of existing road and embankment network on flood condition.</li>
+                    <li>Evaluated the requirement for additional cross-drainage structures in floodplain.</li>
+                </ul>
                 <div class="findings">
-                    <li><strong>Findings:</strong> Although existing roads and embankments in the floodplain can protect crops in case of low return period pre-monsoon flood, these structures can degrade the upstream flood level and duration significantly during high return period pre-monsoon and monsoon flood. A hydraulic connectivity-based workflow was presented to identify the optimal cross-drainage location along the road network to restore the natural hydrodynamics of floodplain.
+                    <strong>Findings:</strong> Although existing roads and embankments in the floodplain can protect crops in case of low return period pre-monsoon flood, these structures can degrade the upstream flood level and duration significantly during high return period pre-monsoon and monsoon flood. A hydraulic connectivity-based workflow was presented to identify the optimal cross-drainage location along the road network to restore the natural hydrodynamics of floodplain.
                 </div>
 
                 <!-- Embedded web map after findings, before Database Directory -->
@@ -577,11 +597,11 @@
                     &nbsp;|&nbsp;
                     Advisor: <a href="https://mataur.buet.ac.bd/home.html" target="_blank" style="color:#084a90;">Professor Md. Ataur Rahman</a>
                 </div>
-                <div class="project-desc">
-                    <li>Analyzed the hydrodynamic performance of single and double wall vertical slotted breakwater for different submergence ratio.
-                </div>
+                <ul class="custom-bullet-list">
+                    <li>Analyzed the hydrodynamic performance of single and double wall vertical slotted breakwater for different submergence ratio.</li>
+                </ul>
                 <div class="findings">
-                    <li><strong>Findings:</strong> Wave energy loss in double wall vertical slotted breakwater was 25-30% more than single wall & with 1.2 relative submergence double wall can perform as effective as solid breakwater.
+                    <strong>Findings:</strong> Wave energy loss in double wall vertical slotted breakwater was 25-30% more than single wall & with 1.2 relative submergence double wall can perform as effective as solid breakwater.
                 </div>
             </div>
 
@@ -642,28 +662,28 @@
         </div>
 
         <!-- PUBLICATIONS -->
-<div id="publications" class="content-section">
-    <h2 class="section-title">Publications</h2>
-    <h3 class="subsection-title">Journal Papers</h3>
-    <div><strong>Forthcoming</strong></div>
-    <ul class="pub-list">
-        <li><span class="author-bold">S. D. Shuvro</span>, J. Yagisawa (submitted), “A Hydraulic Connectivity-Based Approach for Optimizing Cross-Drainage along Floodplain Roads: A Case Study from the Haor Basin, Bangladesh”</li>
-        <li><span class="author-bold">S. D. Shuvro</span>, M. Ferdousi, S. Khan (in press), “Riverbank Erosion Risk Forecast using Kalman Filter Model for Sangu and Matamuhuri Rivers”, <em>Sustainable Design and Construction: Selected Papers from ICACE2024</em></li>
-    </ul>
-    <div><strong>Published</strong></div>
-    <ul class="pub-list">
-        <li><span class="author-bold">S. D. Shuvro</span>, J. Yagisawa (2025), “Effect of Road and Embankment Network on the Flood Intensity of Hoar Basin, Bangladesh”, <em>Journal of Japan Society of Civil Engineers</em>, 13-2, doi: <a href="https://doi.org/10.2208/journalofjsce.24-16102" target="_blank">10.2208/journalofjsce.24-16102</a></li>
-        <li>Sourav Ray, S. Islam, D. R. Tumpa, M. A. Kayum and <span class="author-bold">S. D. Shuvro</span> (2015), “A study on arsenic and copper extraction capacity of Spirodela polyrhiza from water.” <em>Journal of Civil Engineering and Construction Technology</em>, Vol. 6(1), pp. 1-9. doi: <a href="https://doi.org/10.5897/JCECT2014.0342" target="_blank">10.5897/JCECT2014.0342</a></li>
-        <li>Sourav Ray, S. H. Bari, <span class="author-bold">S. D. Shuvro</span> (2015), “Assessment of Water Quality of Goalichara: A Water Quality Index Based Approach.” <em>ARPN Journal of Science and Technology</em>, Vol. 5(7), pp. 336-340</li>
-    </ul>
+        <div id="publications" class="content-section">
+            <h2 class="section-title">Publications</h2>
+            <h3 class="subsection-title">Journal Papers</h3>
+            <div><strong>Forthcoming</strong></div>
+            <ul class="pub-list">
+                <li><span class="author-bold">S. D. Shuvro</span>, J. Yagisawa (submitted), “A Hydraulic Connectivity-Based Approach for Optimizing Cross-Drainage along Floodplain Roads: A Case Study from the Haor Basin, Bangladesh”</li>
+                <li><span class="author-bold">S. D. Shuvro</span>, M. Ferdousi, S. Khan (in press), “Riverbank Erosion Risk Forecast using Kalman Filter Model for Sangu and Matamuhuri Rivers”, <em>Sustainable Design and Construction: Selected Papers from ICACE2024</em></li>
+            </ul>
+            <div><strong>Published</strong></div>
+            <ul class="pub-list">
+                <li><span class="author-bold">S. D. Shuvro</span>, J. Yagisawa (2025), “Effect of Road and Embankment Network on the Flood Intensity of Hoar Basin, Bangladesh”, <em>Journal of Japan Society of Civil Engineers</em>, 13-2, doi: <a href="https://doi.org/10.2208/journalofjsce.24-16102" target="_blank">10.2208/journalofjsce.24-16102</a></li>
+                <li>Sourav Ray, S. Islam, D. R. Tumpa, M. A. Kayum and <span class="author-bold">S. D. Shuvro</span> (2015), “A study on arsenic and copper extraction capacity of Spirodela polyrhiza from water.” <em>Journal of Civil Engineering and Construction Technology</em>, Vol. 6(1), pp. 1-9. doi: <a href="https://doi.org/10.5897/JCECT2014.0342" target="_blank">10.5897/JCECT2014.0342</a></li>
+                <li>Sourav Ray, S. H. Bari, <span class="author-bold">S. D. Shuvro</span> (2015), “Assessment of Water Quality of Goalichara: A Water Quality Index Based Approach.” <em>ARPN Journal of Science and Technology</em>, Vol. 5(7), pp. 336-340</li>
+            </ul>
 
-    <h3 class="subsection-title">Conference Proceedings</h3>
-    <ul class="pub-list">
-        <li><span class="author-bold">S. D. Shuvro</span>, A. Rahaman, T. A. Hossain, A. S. Qadir, F. A. Khan (January 2020), “Assessment of the Irrigation Water Requirement of Ashuganj Agro-Irrigation Project Considering Future Climate Change Scenarios” <em>International Conference on Earth and Environmental Sciences & Technology for Sustainable Development</em>, Dhaka, Bangladesh.</li>
-        <li><span class="author-bold">S. D. Shuvro</span>, Md. A. Rahman (March 2019), “An Experimental Study on Wave Interaction with Vertical Slotted Breakwater” <em>7th International Conference on Water and Flood Management</em>, Dhaka, Bangladesh.</li>
-    </ul>
-</div>
-        
+            <h3 class="subsection-title">Conference Proceedings</h3>
+            <ul class="pub-list">
+                <li><span class="author-bold">S. D. Shuvro</span>, A. Rahaman, T. A. Hossain, A. S. Qadir, F. A. Khan (January 2020), “Assessment of the Irrigation Water Requirement of Ashuganj Agro-Irrigation Project Considering Future Climate Change Scenarios” <em>International Conference on Earth and Environmental Sciences & Technology for Sustainable Development</em>, Dhaka, Bangladesh.</li>
+                <li><span class="author-bold">S. D. Shuvro</span>, Md. A. Rahman (March 2019), “An Experimental Study on Wave Interaction with Vertical Slotted Breakwater” <em>7th International Conference on Water and Flood Management</em>, Dhaka, Bangladesh.</li>
+            </ul>
+        </div>
+
         <!-- TEACHING -->
         <div id="teaching" class="content-section">
             <h2 class="section-title">Teaching</h2>
