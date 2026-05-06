@@ -22,24 +22,20 @@
             line-height: 1.6;
         }
 
-        .wrapper {
-            display: flex;
-            min-height: 100vh;
-        }
-
-        /* LEFT SIDEBAR – fixed, with Hero.jpg and 80% black overlay */
+        /* Fixed sidebar */
         .sidebar {
-            position: sticky;
+            position: fixed;
             top: 0;
-            height: 100vh;
+            left: 0;
             width: 30%;
+            height: 100vh;
             background: url('Hero.jpg') center/cover no-repeat;
-            position: relative;
             padding: 2rem 1.8rem;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
             border-right: 1px solid rgba(255,255,255,0.2);
+            z-index: 1000;
         }
 
         /* 80% black overlay */
@@ -59,48 +55,44 @@
             z-index: 2;
         }
 
-        /* Sidebar text white */
+        /* All sidebar text white, no underline */
         .sidebar, .sidebar h1, .sidebar h1 a, .title, .affiliation, .contact-info, .contact-info a,
         .social-links a, .sidebar .title, .sidebar .affiliation p, .sidebar .contact-info p,
         .sidebar .social-links a, .sidebar hr, .sidebar strong {
             color: #ffffff;
-        }
-
-        /* Name hover: light gray, no underline */
-        .sidebar h1 a:hover {
-            color: #cccccc !important;
             text-decoration: none;
-        }
-
-        /* Email, social links, CV button hover: light gray */
-        .contact-info a:hover, .social-links a:hover, .cv-button a:hover {
-            color: #cccccc !important;
-            background: #ffffff;  /* CV button background remains white, text changes to light gray */
             border-bottom: none;
         }
 
-        /* CV button specific – keep background white, text black normally, but on hover text light gray */
+        /* Name hover: light gray */
+        .sidebar h1 a:hover {
+            color: #cccccc !important;
+        }
+
+        /* External link hover: only color change to light gray */
+        .contact-info a:hover, .social-links a:hover, .cv-button a:hover {
+            color: #cccccc !important;
+            background: transparent;
+        }
+
+        /* CV button – white background, black text, no underline */
         .cv-button a {
             display: inline-block;
             background: #ffffff;
             color: #000000;
-            padding: 10px 20px;   /* reduced by ~10% */
+            padding: 10px 20px;
             border-radius: 40px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.08rem;   /* ~10% smaller than 1.2rem */
-            transition: background 0.2s, color 0.2s;
+            font-size: 1.08rem;
+            transition: color 0.2s;
             width: 100%;
             box-sizing: border-box;
             text-align: center;
         }
         .cv-button a:hover {
-            background: #ffffff;
-            color: #cccccc;
-        }
-
-        .title {
-            color: #ffffff;
+            color: #cccccc !important;
+            background: #ffffff; /* keep background white */
         }
 
         .profile-img img {
@@ -119,14 +111,6 @@
 
         .affiliation p, .contact-info p {
             margin-bottom: 0.6rem;
-        }
-
-        .contact-info a {
-            border-bottom: 1px dotted #aaa;
-        }
-
-        .contact-info a:hover {
-            border-bottom: none;
         }
 
         hr {
@@ -149,8 +133,9 @@
             text-align: center;
         }
 
-        /* RIGHT MAIN CONTENT */
+        /* Main content – adjusted margin to accommodate fixed sidebar */
         .main-content {
+            margin-left: 30%;
             width: 70%;
             background: #ffffff;
             padding: 0;
@@ -211,7 +196,6 @@
             scroll-margin-top: 70px;
         }
 
-        /* Education – now uses entry-row like jobs */
         .entry-row {
             display: flex;
             margin-bottom: 1rem;
@@ -382,7 +366,6 @@
         }
         .dot.active { background: #084a90; }
 
-        /* Professional projects – numbered list */
         .proj-card {
             margin-bottom: 1.5rem;
         }
@@ -439,20 +422,35 @@
         .teaching-item a:hover { text-decoration: underline; }
 
         @media (max-width: 850px) {
-            .wrapper { flex-direction: column; }
             .sidebar {
                 position: relative;
-                height: auto;
                 width: 100%;
-                border-right: none;
-                border-bottom: 1px solid #333;
+                height: auto;
+                margin-bottom: 0;
             }
-            .main-content { width: 100%; }
-            .top-menu { padding: 0.8rem 1rem; gap: 1rem; justify-content: center; }
-            .project-header { flex-direction: column; }
-            .project-duration { white-space: normal; margin-left: 0; }
-            .entry-row { flex-direction: column; margin-bottom: 1.2rem; }
-            .entry-left { margin-bottom: 0.2rem; }
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+            .top-menu {
+                padding: 0.8rem 1rem;
+                gap: 1rem;
+                justify-content: center;
+            }
+            .project-header {
+                flex-direction: column;
+            }
+            .project-duration {
+                white-space: normal;
+                margin-left: 0;
+            }
+            .entry-row {
+                flex-direction: column;
+                margin-bottom: 1.2rem;
+            }
+            .entry-left {
+                margin-bottom: 0.2rem;
+            }
         }
     </style>
 </head>
@@ -511,7 +509,6 @@
             </div>
 
             <h3 class="subsection-title">Education</h3>
-            <!-- Education now uses entry-row like jobs -->
             <div class="entry-row">
                 <div class="entry-left">April 2023 – March 2025</div>
                 <div class="entry-right"><strong>Master of Engineering</strong>, Environmental Science and Civil Engineering, Saitama University, Japan</div>
@@ -592,7 +589,6 @@
 
             <h3 class="subsection-title">Professional</h3>
 
-            <!-- Numbered professional projects -->
             <div class="proj-card">
                 <span class="proj-number">1.</span><span class="proj-title">Project for Planning Capacity Enhancement and Establishment of a Technology Adaptation Cycle on Comprehensive River Management</span>
                 <div class="proj-year">(2022-23)</div>
@@ -654,7 +650,7 @@
 
         <hr class="section-divider">
 
-        <!-- PUBLICATIONS (unchanged) -->
+        <!-- PUBLICATIONS -->
         <div id="publications" class="content-section">
             <h2 class="section-title">Publications</h2>
             <h3 class="subsection-title">Journal Papers</h3>
@@ -678,7 +674,7 @@
 
         <hr class="section-divider">
 
-        <!-- TEACHING (unchanged) -->
+        <!-- TEACHING -->
         <div id="teaching" class="content-section">
             <h2 class="section-title">Teaching</h2>
             <div class="teaching-item">
@@ -694,7 +690,7 @@
 </div>
 
 <script>
-    // Image carousel (unchanged)
+    // Image carousel for Fig.01.jpg ... Fig.10.jpg
     (function() {
         const maxFigs = 10;
         let images = [];
