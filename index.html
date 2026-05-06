@@ -27,7 +27,7 @@
             min-height: 100vh;
         }
 
-        /* LEFT SIDEBAR – with Hero.jpg and 80% black overlay */
+        /* LEFT SIDEBAR – fixed, with Hero.jpg and 80% black overlay */
         .sidebar {
             position: sticky;
             top: 0;
@@ -54,7 +54,6 @@
             z-index: 1;
         }
 
-        /* All sidebar content above overlay */
         .sidebar > * {
             position: relative;
             z-index: 2;
@@ -67,15 +66,43 @@
             color: #ffffff;
         }
 
+        /* Name hover: light gray, no underline */
         .sidebar h1 a:hover {
-            color: #084a90;
+            color: #cccccc !important;
+            text-decoration: none;
+        }
+
+        /* Email, social links, CV button hover: light gray */
+        .contact-info a:hover, .social-links a:hover, .cv-button a:hover {
+            color: #cccccc !important;
+            background: #ffffff;  /* CV button background remains white, text changes to light gray */
+            border-bottom: none;
+        }
+
+        /* CV button specific – keep background white, text black normally, but on hover text light gray */
+        .cv-button a {
+            display: inline-block;
+            background: #ffffff;
+            color: #000000;
+            padding: 10px 20px;   /* reduced by ~10% */
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.08rem;   /* ~10% smaller than 1.2rem */
+            transition: background 0.2s, color 0.2s;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .cv-button a:hover {
+            background: #ffffff;
+            color: #cccccc;
         }
 
         .title {
             color: #ffffff;
         }
 
-        /* Profile image – white circle border */
         .profile-img img {
             width: 190px;
             height: 190px;
@@ -99,7 +126,7 @@
         }
 
         .contact-info a:hover {
-            color: #084a90;
+            border-bottom: none;
         }
 
         hr {
@@ -116,33 +143,10 @@
             margin-top: 0.8rem;
         }
 
-        .social-links a:hover {
-            color: #084a90;
-            text-decoration: underline;
-        }
-
-        /* CV Button – white rounded box, black text, at bottom */
         .cv-button {
             margin-top: auto;
             margin-bottom: 0;
             text-align: center;
-        }
-        .cv-button a {
-            display: inline-block;
-            background: #ffffff;
-            color: #000000;
-            padding: 12px 24px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.2rem;
-            transition: background 0.2s, color 0.2s;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .cv-button a:hover {
-            background: #084a90;
-            color: #ffffff;
         }
 
         /* RIGHT MAIN CONTENT */
@@ -181,7 +185,6 @@
             padding: 2rem 2.5rem 2rem 2.5rem;
             scroll-margin-top: 70px;
         }
-        /* theme color horizontal line between sections */
         .section-divider {
             border: none;
             height: 2px;
@@ -208,13 +211,7 @@
             scroll-margin-top: 70px;
         }
 
-        /* Education – single line with commas */
-        .edu-entry {
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-            color: #000000;
-        }
-
+        /* Education – now uses entry-row like jobs */
         .entry-row {
             display: flex;
             margin-bottom: 1rem;
@@ -263,14 +260,12 @@
             top: -0.15rem;
         }
 
-        /* hobby note black */
         .hobby-note {
             margin-top: 1rem;
             padding-top: 0.5rem;
             color: #000000;
         }
 
-        /* Academic project cards */
         .project-item {
             margin-bottom: 1.8rem;
         }
@@ -335,7 +330,6 @@
             border: 0;
         }
 
-        /* Carousel */
         .carousel-container {
             position: relative;
             max-width: 100%;
@@ -388,8 +382,27 @@
         }
         .dot.active { background: #084a90; }
 
+        /* Professional projects – numbered list */
         .proj-card {
             margin-bottom: 1.5rem;
+        }
+        .proj-number {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #084a90;
+            margin-right: 0.5rem;
+        }
+        .proj-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #000000;
+            display: inline;
+        }
+        .proj-year {
+            font-size: 0.85rem;
+            color: #5a6e8a;
+            margin: 0.2rem 0 0.5rem 1rem;
+            display: inline-block;
         }
         .proj-desc {
             list-style: none;
@@ -410,17 +423,6 @@
             position: absolute;
             left: 0;
             top: -0.1rem;
-        }
-        .proj-title {
-            font-weight: 600;
-            font-size: 1rem;
-            color: #000000;
-            margin-bottom: 0.2rem;
-        }
-        .proj-year {
-            font-size: 0.85rem;
-            color: #5a6e8a;
-            margin-bottom: 0.5rem;
         }
 
         .pub-list { margin-left: 0; }
@@ -509,11 +511,14 @@
             </div>
 
             <h3 class="subsection-title">Education</h3>
-            <div class="edu-entry">
-                <strong>Master of Engineering</strong>, Environmental Science and Civil Engineering, Saitama University, Japan (April 2023 – March 2025)
+            <!-- Education now uses entry-row like jobs -->
+            <div class="entry-row">
+                <div class="entry-left">April 2023 – March 2025</div>
+                <div class="entry-right"><strong>Master of Engineering</strong>, Environmental Science and Civil Engineering, Saitama University, Japan</div>
             </div>
-            <div class="edu-entry">
-                <strong>Bachelor of Science</strong>, Water Resources Engineering, Bangladesh University of Engineering and Technology, Dhaka (July 2014 – October 2018)
+            <div class="entry-row">
+                <div class="entry-left">July 2014 – October 2018</div>
+                <div class="entry-right"><strong>Bachelor of Science</strong>, Water Resources Engineering, Bangladesh University of Engineering and Technology, Dhaka</div>
             </div>
 
             <h3 class="subsection-title">Professional Appointments</h3>
@@ -538,7 +543,6 @@
 
             <h3 class="subsection-title">Academic</h3>
 
-            <!-- Master's Thesis -->
             <div class="project-item">
                 <div class="project-header">
                     <span class="project-title">Master’s Thesis: “Effect of Road and Embankment Network on Flood Intensity of Haor Basin in Bangladesh and Possible Solution”</span>
@@ -561,13 +565,12 @@
                     <iframe src="https://sds31.github.io/Haor-Flood-Analysis-Directory/settlement_inundation" title="Settlement Inundation Map"></iframe>
                 </div>
                 <div class="data-link">
-                    <span class="flashing-link">Database Directory - Access</span>:
+                    <span class="flashing-link">Database Directory –</span>
                     <a href="https://sds31.github.io/Haor-Flood-Analysis-Directory/" target="_blank" style="font-weight:bold; color:#084a90;">https://sds31.github.io/Haor-Flood-Analysis-Directory/</a>
                 </div>
             </div>
             <hr class="project-divider">
 
-            <!-- Undergraduate Thesis (BSc) -->
             <div class="project-item">
                 <div class="project-header">
                     <span class="project-title">Undergraduate Thesis: “An Experimental Study on Wave Interaction with Vertical Slotted Breakwater”</span>
@@ -585,13 +588,13 @@
                     <strong>Findings:</strong> Wave energy loss in double wall vertical slotted breakwater was 25-30% more than single wall & with 1.2 relative submergence double wall can perform as effective as solid breakwater.
                 </div>
             </div>
-            <!-- Dark ash line after BSc thesis -->
             <hr class="project-divider">
 
             <h3 class="subsection-title">Professional</h3>
 
+            <!-- Numbered professional projects -->
             <div class="proj-card">
-                <div class="proj-title">Project for Planning Capacity Enhancement and Establishment of a Technology Adaptation Cycle on Comprehensive River Management</div>
+                <span class="proj-number">1.</span><span class="proj-title">Project for Planning Capacity Enhancement and Establishment of a Technology Adaptation Cycle on Comprehensive River Management</span>
                 <div class="proj-year">(2022-23)</div>
                 <ul class="proj-desc">
                     <li>Thematic mapping of geospatial features of Jamuna, Sangu, and Matamuhuri Rivers.</li>
@@ -601,7 +604,7 @@
             <hr class="project-divider">
 
             <div class="proj-card">
-                <div class="proj-title">Formulation of Drainage Master plan of Comilla University</div>
+                <span class="proj-number">2.</span><span class="proj-title">Formulation of Drainage Master plan of Comilla University</span>
                 <div class="proj-year">(2022)</div>
                 <ul class="proj-desc">
                     <li>Modelled storm drainage using PC SWMM for different design rainfall event and detailed cost estimation.</li>
@@ -610,7 +613,7 @@
             <hr class="project-divider">
 
             <div class="proj-card">
-                <div class="proj-title">Integrated Storm-water Management Plan for Thimphu Thromde</div>
+                <span class="proj-number">3.</span><span class="proj-title">Integrated Storm-water Management Plan for Thimphu Thromde</span>
                 <div class="proj-year">(2019-20)</div>
                 <ul class="proj-desc">
                     <li>Analyzed of historical rainfall and temperature for predicting future trend using exponential interpolation.</li>
@@ -621,7 +624,7 @@
             <hr class="project-divider">
 
             <div class="proj-card">
-                <div class="proj-title">Master Plan and Feasibility Study for Ashuganj-Palash Agro-Irrigation Project of BADC-5th Phase</div>
+                <span class="proj-number">4.</span><span class="proj-title">Master Plan and Feasibility Study for Ashuganj-Palash Agro-Irrigation Project of BADC-5th Phase</span>
                 <div class="proj-year">(2019-20)</div>
                 <ul class="proj-desc">
                     <li>Assessed irrigation water requirement using CROPWAT 8.0.</li>
@@ -631,7 +634,7 @@
             <hr class="project-divider">
 
             <div class="proj-card">
-                <div class="proj-title">Action Research on Climate Change Forecasting and Participatory Scenario Development and Assessment of the Agriculture and Fisheries Sectors, Exposure to Climate Risk</div>
+                <span class="proj-number">5.</span><span class="proj-title">Action Research on Climate Change Forecasting and Participatory Scenario Development and Assessment of the Agriculture and Fisheries Sectors, Exposure to Climate Risk</span>
                 <div class="proj-year">(2019-20)</div>
                 <ul class="proj-desc">
                     <li>Developed methodology and questionnaire formulation for risk assessment and participatory scenario development for climate vulnerability analysis.</li>
@@ -641,7 +644,7 @@
             <hr class="project-divider">
 
             <div class="proj-card">
-                <div class="proj-title">Technical Assistance on Geo-hazard Risk Assessment in Transportation Sector</div>
+                <span class="proj-number">6.</span><span class="proj-title">Technical Assistance on Geo-hazard Risk Assessment in Transportation Sector</span>
                 <div class="proj-year">(2019)</div>
                 <ul class="proj-desc">
                     <li>Analyzed meteor-hydrological data: rainfall frequency analysis, design discharge determination using intensity duration frequency (IDF) and SCS Curve Number Method.</li>
@@ -651,7 +654,7 @@
 
         <hr class="section-divider">
 
-        <!-- PUBLICATIONS -->
+        <!-- PUBLICATIONS (unchanged) -->
         <div id="publications" class="content-section">
             <h2 class="section-title">Publications</h2>
             <h3 class="subsection-title">Journal Papers</h3>
@@ -675,7 +678,7 @@
 
         <hr class="section-divider">
 
-        <!-- TEACHING -->
+        <!-- TEACHING (unchanged) -->
         <div id="teaching" class="content-section">
             <h2 class="section-title">Teaching</h2>
             <div class="teaching-item">
