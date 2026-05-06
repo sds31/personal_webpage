@@ -27,46 +27,44 @@
             min-height: 100vh;
         }
 
-        /* LEFT SIDEBAR – FIXED, 80% BLACK */
+        /* LEFT SIDEBAR – with Hero.jpg and 80% black overlay */
         .sidebar {
             position: sticky;
             top: 0;
             height: 100vh;
             width: 30%;
-            background: #1a1a1a;  /* 80% black equivalent */
+            background: url('Hero.jpg') center/cover no-repeat;
+            position: relative;
             padding: 2rem 1.8rem;
-            border-right: 1px solid #333;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* 80% black overlay */
+        .sidebar::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1;
+        }
+
+        /* All sidebar content above overlay */
+        .sidebar > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Sidebar text white */
+        .sidebar, .sidebar h1, .sidebar h1 a, .title, .affiliation, .contact-info, .contact-info a,
+        .social-links a, .sidebar .title, .sidebar .affiliation p, .sidebar .contact-info p,
+        .sidebar .social-links a, .sidebar hr, .sidebar strong {
             color: #ffffff;
-        }
-
-        .profile-img {
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .profile-img img {
-            width: 190px;
-            height: 190px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid #084a90;
-            box-shadow: 0 0 0 2px #ffffff, 0 6px 14px rgba(0,0,0,0.3);
-        }
-
-        .sidebar h1 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-            text-align: center;
-        }
-
-        .sidebar h1 a {
-            color: #ffffff;
-            text-decoration: none;
-            transition: color 0.2s;
         }
 
         .sidebar h1 a:hover {
@@ -74,11 +72,17 @@
         }
 
         .title {
-            text-align: center;
-            font-weight: 500;
-            color: #084a90;
-            margin-bottom: 1.2rem;
-            font-size: 1rem;
+            color: #ffffff;
+        }
+
+        /* Profile image – white circle border */
+        .profile-img img {
+            width: 190px;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #ffffff;
+            box-shadow: 0 0 0 2px rgba(0,0,0,0.2), 0 6px 14px rgba(0,0,0,0.3);
         }
 
         .affiliation, .contact-info {
@@ -91,21 +95,18 @@
         }
 
         .contact-info a {
-            color: #ffffff;
-            text-decoration: none;
-            border-bottom: 1px dotted #888;
+            border-bottom: 1px dotted #aaa;
         }
 
         .contact-info a:hover {
             color: #084a90;
-            border-bottom-style: solid;
         }
 
         hr {
             margin: 1.5rem 0;
             border: none;
             height: 1px;
-            background: #e0e7f0;
+            background: #444;
         }
 
         .social-links {
@@ -114,17 +115,13 @@
             gap: 0.6rem;
             margin-top: 0.8rem;
         }
-        .social-links a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 1rem;
-        }
+
         .social-links a:hover {
             color: #084a90;
             text-decoration: underline;
         }
 
-        /* CV Button – white rounded box, black large text, at bottom */
+        /* CV Button – white rounded box, black text, at bottom */
         .cv-button {
             margin-top: auto;
             margin-bottom: 0;
@@ -138,7 +135,7 @@
             border-radius: 40px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.2rem;   /* 20% larger than previous 1rem */
+            font-size: 1.2rem;
             transition: background 0.2s, color 0.2s;
             width: 100%;
             box-sizing: border-box;
@@ -184,7 +181,7 @@
             padding: 2rem 2.5rem 2rem 2.5rem;
             scroll-margin-top: 70px;
         }
-        /* Horizontal line between sections */
+        /* theme color horizontal line between sections */
         .section-divider {
             border: none;
             height: 2px;
@@ -211,7 +208,13 @@
             scroll-margin-top: 70px;
         }
 
-        /* left-right align for Education & Professional Appointments */
+        /* Education – single line with commas */
+        .edu-entry {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #000000;
+        }
+
         .entry-row {
             display: flex;
             margin-bottom: 1rem;
@@ -260,17 +263,17 @@
             top: -0.15rem;
         }
 
+        /* hobby note black */
         .hobby-note {
             margin-top: 1rem;
             padding-top: 0.5rem;
-            color: #2c3e50;
+            color: #000000;
         }
 
         /* Academic project cards */
         .project-item {
             margin-bottom: 1.8rem;
         }
-        /* divider between projects */
         .project-divider {
             border: none;
             height: 1px;
@@ -332,6 +335,7 @@
             border: 0;
         }
 
+        /* Carousel */
         .carousel-container {
             position: relative;
             max-width: 100%;
@@ -370,16 +374,9 @@
         .carousel-btn:hover {
             background: rgba(0,0,0,0.8);
         }
-        .prev {
-            left: 10px;
-        }
-        .next {
-            right: 10px;
-        }
-        .carousel-dots {
-            text-align: center;
-            padding: 10px;
-        }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+        .carousel-dots { text-align: center; padding: 10px; }
         .dot {
             display: inline-block;
             width: 10px;
@@ -389,9 +386,7 @@
             margin: 0 4px;
             cursor: pointer;
         }
-        .dot.active {
-            background: #084a90;
-        }
+        .dot.active { background: #084a90; }
 
         .proj-card {
             margin-bottom: 1.5rem;
@@ -428,12 +423,8 @@
             margin-bottom: 0.5rem;
         }
 
-        .pub-list {
-            margin-left: 0;
-        }
-        .author-bold {
-            font-weight: 700;
-        }
+        .pub-list { margin-left: 0; }
+        .author-bold { font-weight: 700; }
 
         .teaching-item {
             margin-bottom: 1rem;
@@ -443,14 +434,10 @@
             text-decoration: none;
             font-weight: 500;
         }
-        .teaching-item a:hover {
-            text-decoration: underline;
-        }
+        .teaching-item a:hover { text-decoration: underline; }
 
         @media (max-width: 850px) {
-            .wrapper {
-                flex-direction: column;
-            }
+            .wrapper { flex-direction: column; }
             .sidebar {
                 position: relative;
                 height: auto;
@@ -458,28 +445,12 @@
                 border-right: none;
                 border-bottom: 1px solid #333;
             }
-            .main-content {
-                width: 100%;
-            }
-            .top-menu {
-                padding: 0.8rem 1rem;
-                gap: 1rem;
-                justify-content: center;
-            }
-            .project-header {
-                flex-direction: column;
-            }
-            .project-duration {
-                white-space: normal;
-                margin-left: 0;
-            }
-            .entry-row {
-                flex-direction: column;
-                margin-bottom: 1.2rem;
-            }
-            .entry-left {
-                margin-bottom: 0.2rem;
-            }
+            .main-content { width: 100%; }
+            .top-menu { padding: 0.8rem 1rem; gap: 1rem; justify-content: center; }
+            .project-header { flex-direction: column; }
+            .project-duration { white-space: normal; margin-left: 0; }
+            .entry-row { flex-direction: column; margin-bottom: 1.2rem; }
+            .entry-left { margin-bottom: 0.2rem; }
         }
     </style>
 </head>
@@ -524,7 +495,7 @@
         <div id="about" class="content-section">
             <h2 class="section-title">About Me</h2>
             <div class="about-text">
-                I am an engineer, researcher and educator from Bangladesh. My work sits at the intersection of water resources engineering, computational modeling, and geospatial analysis, with a core focus on understanding and mitigating flood and erosion hazards in climate‑sensitive landscapes. I am driven by the need to turn complex environmental data into actionable insights—whether that means optimizing drainage networks in rural floodplains, forecasting riverbank migration, or designing stormwater systems for rapidly urbanizing catchments.
+                I am a water resources engineer from Bangladesh. My work sits at the intersection of water resources engineering, computational modeling, and geospatial analysis, with a core focus on understanding and mitigating flood and erosion hazards in climate‑sensitive landscapes. I am driven by the need to turn complex environmental data into actionable insights—whether that means optimizing drainage networks in rural floodplains, forecasting riverbank migration, or designing stormwater systems for rapidly urbanizing catchments.
             </div>
             <div class="about-text">
                 Through my research I aim to address following aspects:
@@ -538,13 +509,11 @@
             </div>
 
             <h3 class="subsection-title">Education</h3>
-            <div class="entry-row">
-                <div class="entry-left">April 2023 – March 2025</div>
-                <div class="entry-right"><strong>Master of Engineering</strong>, Environmental Science and Civil Engineering <br> Saitama University, Japan</div>
+            <div class="edu-entry">
+                <strong>Master of Engineering</strong>, Environmental Science and Civil Engineering, Saitama University, Japan (April 2023 – March 2025)
             </div>
-            <div class="entry-row">
-                <div class="entry-left">July 2014 – October 2018</div>
-                <div class="entry-right"><strong>Bachelor of Science</strong>, Water Resources Engineering <br> Bangladesh University of Engineering and Technology, Dhaka</div>
+            <div class="edu-entry">
+                <strong>Bachelor of Science</strong>, Water Resources Engineering, Bangladesh University of Engineering and Technology, Dhaka (July 2014 – October 2018)
             </div>
 
             <h3 class="subsection-title">Professional Appointments</h3>
@@ -561,7 +530,6 @@
             </div>
         </div>
 
-        <!-- SECTION DIVIDER -->
         <hr class="section-divider">
 
         <!-- RESEARCH & PROJECTS -->
@@ -599,7 +567,7 @@
             </div>
             <hr class="project-divider">
 
-            <!-- Undergraduate Thesis -->
+            <!-- Undergraduate Thesis (BSc) -->
             <div class="project-item">
                 <div class="project-header">
                     <span class="project-title">Undergraduate Thesis: “An Experimental Study on Wave Interaction with Vertical Slotted Breakwater”</span>
@@ -617,10 +585,11 @@
                     <strong>Findings:</strong> Wave energy loss in double wall vertical slotted breakwater was 25-30% more than single wall & with 1.2 relative submergence double wall can perform as effective as solid breakwater.
                 </div>
             </div>
+            <!-- Dark ash line after BSc thesis -->
+            <hr class="project-divider">
 
             <h3 class="subsection-title">Professional</h3>
 
-            <!-- Professional projects list with dividers -->
             <div class="proj-card">
                 <div class="proj-title">Project for Planning Capacity Enhancement and Establishment of a Technology Adaptation Cycle on Comprehensive River Management</div>
                 <div class="proj-year">(2022-23)</div>
@@ -680,7 +649,6 @@
             </div>
         </div>
 
-        <!-- SECTION DIVIDER -->
         <hr class="section-divider">
 
         <!-- PUBLICATIONS -->
@@ -705,7 +673,6 @@
             </ul>
         </div>
 
-        <!-- SECTION DIVIDER -->
         <hr class="section-divider">
 
         <!-- TEACHING -->
