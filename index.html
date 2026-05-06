@@ -27,88 +27,126 @@
             min-height: 100vh;
         }
 
-        /* LEFT SIDEBAR – with background image and overlay */
+        /* LEFT SIDEBAR – FIXED, 80% BLACK */
         .sidebar {
             position: sticky;
             top: 0;
             height: 100vh;
             width: 30%;
-            background: url('Hero.jpg') center/cover no-repeat;
-            position: relative;
+            background: #1a1a1a;  /* 80% black equivalent */
             padding: 2rem 1.8rem;
-            border-right: 1px solid rgba(255,255,255,0.2);
+            border-right: 1px solid #333;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-        }
-
-        /* Dark overlay with 50% black transparency */
-        .sidebar::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1;
-        }
-
-        /* All sidebar content sits above overlay */
-        .sidebar > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Sidebar text colours – white */
-        .sidebar, .sidebar h1, .sidebar h1 a, .title, .affiliation, .contact-info, .contact-info a,
-        .social-links a, .cv-button a, .sidebar .title, .sidebar .affiliation p, .sidebar .contact-info p,
-        .sidebar .social-links a, .sidebar .cv-button a, .sidebar hr, .sidebar strong {
             color: #ffffff;
         }
 
-        /* Keep CV button background but adjust text colour */
-        .cv-button a {
-            background: rgba(8,74,144,0.9);
-            color: white;
-        }
-        .cv-button a:hover {
-            background: #052d59;
+        .profile-img {
+            text-align: center;
+            margin-bottom: 1.5rem;
         }
 
-        /* Profile image border – light for visibility */
         .profile-img img {
             width: 190px;
             height: 190px;
             object-fit: cover;
             border-radius: 50%;
-            border: 4px solid rgba(255,255,255,0.8);
-            box-shadow: 0 0 0 2px rgba(0,0,0,0.2), 0 6px 14px rgba(0,0,0,0.3);
+            border: 4px solid #084a90;
+            box-shadow: 0 0 0 2px #ffffff, 0 6px 14px rgba(0,0,0,0.3);
         }
 
-        /* Sidebar links hover */
-        .sidebar a:hover {
-            color: #b0d4e8 !important;
+        .sidebar h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            text-align: center;
         }
 
-        .sidebar hr {
-            background: rgba(255,255,255,0.3);
+        .sidebar h1 a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.2s;
         }
 
-        /* Ensure title colour remains white */
+        .sidebar h1 a:hover {
+            color: #084a90;
+        }
+
         .title {
+            text-align: center;
+            font-weight: 500;
+            color: #084a90;
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .affiliation, .contact-info {
+            margin-top: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .affiliation p, .contact-info p {
+            margin-bottom: 0.6rem;
+        }
+
+        .contact-info a {
+            color: #ffffff;
+            text-decoration: none;
+            border-bottom: 1px dotted #888;
+        }
+
+        .contact-info a:hover {
+            color: #084a90;
+            border-bottom-style: solid;
+        }
+
+        hr {
+            margin: 1.5rem 0;
+            border: none;
+            height: 1px;
+            background: #e0e7f0;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-top: 0.8rem;
+        }
+        .social-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .social-links a:hover {
+            color: #084a90;
+            text-decoration: underline;
+        }
+
+        /* CV Button – white rounded box, black large text, at bottom */
+        .cv-button {
+            margin-top: auto;
+            margin-bottom: 0;
+            text-align: center;
+        }
+        .cv-button a {
+            display: inline-block;
+            background: #ffffff;
+            color: #000000;
+            padding: 12px 24px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;   /* 20% larger than previous 1rem */
+            transition: background 0.2s, color 0.2s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .cv-button a:hover {
+            background: #084a90;
             color: #ffffff;
         }
-
-        /* Keep other elements unchanged */
-        .right-main-content {
-            /* no change */
-        }
-
-        /* the rest of your existing CSS stays exactly as before */
-        /* (all other styles unchanged from final version) */
-        /* ... */
-        /* I will include the complete remaining CSS from your previous version here for completeness */
 
         /* RIGHT MAIN CONTENT */
         .main-content {
@@ -144,11 +182,14 @@
 
         .content-section {
             padding: 2rem 2.5rem 2rem 2.5rem;
-            border-bottom: 1px solid #f0f2f5;
             scroll-margin-top: 70px;
         }
-        .content-section:last-of-type {
-            border-bottom: none;
+        /* Horizontal line between sections */
+        .section-divider {
+            border: none;
+            height: 2px;
+            background: #084a90;
+            margin: 0;
         }
 
         .section-title {
@@ -170,6 +211,7 @@
             scroll-margin-top: 70px;
         }
 
+        /* left-right align for Education & Professional Appointments */
         .entry-row {
             display: flex;
             margin-bottom: 1rem;
@@ -224,8 +266,16 @@
             color: #2c3e50;
         }
 
+        /* Academic project cards */
         .project-item {
-            margin-bottom: 2rem;
+            margin-bottom: 1.8rem;
+        }
+        /* divider between projects */
+        .project-divider {
+            border: none;
+            height: 1px;
+            background: #cccccc;
+            margin: 1rem 0 1.5rem 0;
         }
         .project-header {
             display: flex;
@@ -343,6 +393,9 @@
             background: #084a90;
         }
 
+        .proj-card {
+            margin-bottom: 1.5rem;
+        }
         .proj-desc {
             list-style: none;
             padding-left: 1.8rem;
@@ -362,10 +415,6 @@
             position: absolute;
             left: 0;
             top: -0.1rem;
-        }
-
-        .proj-card {
-            margin-bottom: 1.8rem;
         }
         .proj-title {
             font-weight: 600;
@@ -407,7 +456,7 @@
                 height: auto;
                 width: 100%;
                 border-right: none;
-                border-bottom: 1px solid rgba(255,255,255,0.2);
+                border-bottom: 1px solid #333;
             }
             .main-content {
                 width: 100%;
@@ -464,7 +513,6 @@
     </aside>
 
     <main class="main-content">
-        <!-- Top menu and all other content remains exactly as in your final version -->
         <div class="top-menu">
             <a href="#about">About Me</a>
             <a href="#research">Research & Projects</a>
@@ -472,6 +520,7 @@
             <a href="#teaching">Teaching</a>
         </div>
 
+        <!-- ABOUT ME -->
         <div id="about" class="content-section">
             <h2 class="section-title">About Me</h2>
             <div class="about-text">
@@ -512,9 +561,16 @@
             </div>
         </div>
 
+        <!-- SECTION DIVIDER -->
+        <hr class="section-divider">
+
+        <!-- RESEARCH & PROJECTS -->
         <div id="research" class="content-section">
             <h2 class="section-title">Research & Projects</h2>
+
             <h3 class="subsection-title">Academic</h3>
+
+            <!-- Master's Thesis -->
             <div class="project-item">
                 <div class="project-header">
                     <span class="project-title">Master’s Thesis: “Effect of Road and Embankment Network on Flood Intensity of Haor Basin in Bangladesh and Possible Solution”</span>
@@ -541,7 +597,9 @@
                     <a href="https://sds31.github.io/Haor-Flood-Analysis-Directory/" target="_blank" style="font-weight:bold; color:#084a90;">https://sds31.github.io/Haor-Flood-Analysis-Directory/</a>
                 </div>
             </div>
+            <hr class="project-divider">
 
+            <!-- Undergraduate Thesis -->
             <div class="project-item">
                 <div class="project-header">
                     <span class="project-title">Undergraduate Thesis: “An Experimental Study on Wave Interaction with Vertical Slotted Breakwater”</span>
@@ -561,6 +619,8 @@
             </div>
 
             <h3 class="subsection-title">Professional</h3>
+
+            <!-- Professional projects list with dividers -->
             <div class="proj-card">
                 <div class="proj-title">Project for Planning Capacity Enhancement and Establishment of a Technology Adaptation Cycle on Comprehensive River Management</div>
                 <div class="proj-year">(2022-23)</div>
@@ -569,6 +629,8 @@
                     <li>Developed a risk matrix for predicting riverbank erosion risk using the Digital Shoreline Analysis System (DSAS) extension of ArcGIS.</li>
                 </ul>
             </div>
+            <hr class="project-divider">
+
             <div class="proj-card">
                 <div class="proj-title">Formulation of Drainage Master plan of Comilla University</div>
                 <div class="proj-year">(2022)</div>
@@ -576,6 +638,8 @@
                     <li>Modelled storm drainage using PC SWMM for different design rainfall event and detailed cost estimation.</li>
                 </ul>
             </div>
+            <hr class="project-divider">
+
             <div class="proj-card">
                 <div class="proj-title">Integrated Storm-water Management Plan for Thimphu Thromde</div>
                 <div class="proj-year">(2019-20)</div>
@@ -585,6 +649,8 @@
                     <li>Delineated urban catchment, simulated urban storm drainage network using SWMM and criticality assessment of existing network.</li>
                 </ul>
             </div>
+            <hr class="project-divider">
+
             <div class="proj-card">
                 <div class="proj-title">Master Plan and Feasibility Study for Ashuganj-Palash Agro-Irrigation Project of BADC-5th Phase</div>
                 <div class="proj-year">(2019-20)</div>
@@ -593,6 +659,8 @@
                     <li>Analyzed dependable flow and water source sustainability using SOBEK.</li>
                 </ul>
             </div>
+            <hr class="project-divider">
+
             <div class="proj-card">
                 <div class="proj-title">Action Research on Climate Change Forecasting and Participatory Scenario Development and Assessment of the Agriculture and Fisheries Sectors, Exposure to Climate Risk</div>
                 <div class="proj-year">(2019-20)</div>
@@ -601,6 +669,8 @@
                     <li>Field visit: Focal Group Discussion (FGD) and Key Informant Interview.</li>
                 </ul>
             </div>
+            <hr class="project-divider">
+
             <div class="proj-card">
                 <div class="proj-title">Technical Assistance on Geo-hazard Risk Assessment in Transportation Sector</div>
                 <div class="proj-year">(2019)</div>
@@ -610,6 +680,10 @@
             </div>
         </div>
 
+        <!-- SECTION DIVIDER -->
+        <hr class="section-divider">
+
+        <!-- PUBLICATIONS -->
         <div id="publications" class="content-section">
             <h2 class="section-title">Publications</h2>
             <h3 class="subsection-title">Journal Papers</h3>
@@ -631,6 +705,10 @@
             </ul>
         </div>
 
+        <!-- SECTION DIVIDER -->
+        <hr class="section-divider">
+
+        <!-- TEACHING -->
         <div id="teaching" class="content-section">
             <h2 class="section-title">Teaching</h2>
             <div class="teaching-item">
@@ -646,7 +724,7 @@
 </div>
 
 <script>
-    // Image carousel for Fig.01.jpg ... Fig.10.jpg (only existing files)
+    // Image carousel (unchanged)
     (function() {
         const maxFigs = 10;
         let images = [];
